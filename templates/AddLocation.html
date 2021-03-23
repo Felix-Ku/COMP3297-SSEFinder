@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    </br>
+  <h1>Add location data</h1>
+
+  <form action = "{% url 'AddLocation' %}" method="post"> {% csrf_token %}
+  <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+  <tr>
+    <td>Location : </td>
+    <td><label for="location"></label><input type="text" name ="location" value ="" /></td>
+  </tr>
+  </br>
+  <tr>
+    <td>Population : </td>
+    <td><p><label for="Pop"></label><input type="text" name ="Pop" value ="" /></p></td>
+  </tr>
+  <tr>
+    <td>URL : </td>
+    <td><p><label for="url"></label><input type="text" name ="url" value ="" /></p></td>
+  </tr>
+  <tr>
+    <td>API : </td>
+    <td><p><label for="api"></label><input type="text" name ="api" value ="" /></p></td>
+
+  </tr>
+</table>
+      </br>
+  <input type="submit" value="Submit"/>
+  </form>
+
+{% endblock %}

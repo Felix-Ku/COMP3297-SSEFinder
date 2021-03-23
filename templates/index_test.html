@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+    </br>
+
+  <h1><p style="color:red">TESTING PAGE - Home page</p></h1>
+
+  <p><em>Welcome</em>!</p>
+    <p>Below shows the data for default location Hong Kong,
+      you may also select and filter other locations!</p>
+    <hr>
+
+    <h2>Search & Filter</h2>
+    <p>Pick the location you want to search for</p>
+    <p>(More filtering options coming in future versions)</p>
+  <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+    <tr>
+        <th scope="row">Location : </th>
+        <td><form method="POST"> {% csrf_token %}
+            <select name="location">
+                {% for location in locations %}
+                    <option value="{{ location.name }}">
+                        {{ location.name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Select">
+        </form>
+        </td>
+    </tr>
+    <tr><th scope="row">Date : </th>
+        <td>
+            <div style="text-align: center;">
+
+                {{ dateform.date_field }}
+            </div>
+        </td>
+    </tr>
+  </table>
+
+    </br>
+
+
+     <p> Selected location: <strong><em>{{ selected_region }}</em></strong></p>
+     <p> Selected date: <strong><em></em></strong></p>
+
+
+
+    <hr>
+
+
+
+  <h2>Query result</h2>
+  <p>Data retrieval status : <strong><em>{{ data_status }}</em></strong></p>
+
+   <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+    <tr>
+        <th scope="row">Name of Location</th>
+        <td>{{ location_name }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Date for the information shown</th>
+        <td>As of  {{ location_date }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Total number of confirmed cases</th>
+        <td>{{ location_confirmed_total }}</td>
+    </tr>
+   <tr>
+        <th scope="row">Total number of confirmed cases per million of population</th>
+        <td>{{ location_confirmed_total_perMil }}</td>
+    </tr>
+   <tr>
+        <th scope="row">Total number of fatalities</th>
+        <td>{{ location_fatalities_total }}</td>
+    </tr>
+   <tr>
+        <th scope="row">Total number of fatalities per million of population</th>
+        <td>{{ location_fatalities_total_perMil }}</td>
+    </tr>
+   <tr>
+        <th scope="row">Number of new cases for that day</th>
+        <td>{{ location_new }}</td>
+    </tr>
+   <tr>
+        <th scope="row">7-day average number of new cases</th>
+        <td>{{ location_new_WeekAvg }}</td>
+    </tr>
+   <tr>
+        <th scope="row">Number of new fatalities for that day</th>
+        <td>{{ location_fatalities_new }}</td>
+    </tr>
+   <tr>
+        <th scope="row">7-day average number of new fatalities</th>
+        <td>{{ location_fatalities_new_WeekAvg }}</td>
+    </tr>
+  </table>
+
+
+{% endblock %}

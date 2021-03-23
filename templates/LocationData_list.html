@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  </br>
+  <h1>View all location data</h1>
+  </br>
+  <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+  <tr>
+    <th>Location</th>
+    <th>Population</th>
+    <th>URL</th>
+    <th>API</th>
+  </tr>
+    {%  for instance in object_list %}
+        <tr><td>{{ instance.name }}</td><td>{{ instance.Pop }}</td><td>{{ instance.url }}</td><td>{{ instance.api }}</td></tr>
+
+    {% endfor %}
+
+  </table>
+{% endblock %}
