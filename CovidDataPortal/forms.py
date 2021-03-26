@@ -4,8 +4,8 @@ from django.forms import ModelForm
 class InputForm(forms.Form):
     location = forms.CharField()
     Pop = forms.IntegerField()
-    url = forms.CharField()
     api = forms.CharField()
+    url = forms.CharField()
 
 class DateInput(forms.DateInput):
     input_type = "date"

@@ -20,7 +20,7 @@ def index(request):
     locations = Location_data.objects.filter()
     form = request.POST
     selected_region = None
-    selected_region = ""  # Default location
+    selected_region = ""  # Default location as Hong Kong
     if request.method == "POST":
         selected_region = request.POST.get("location")
 
@@ -41,10 +41,10 @@ def index(request):
         datelist.append((datetime.datetime.today() - datetime.timedelta(days=num)).strftime('%d/%m/%Y'))
 
     if (found == True):
-        url = location.api
+        url = location.url
 
         q = {
-            "resource": location.url,
+            "resource": location.api,
             "section": 1,
             "format": "json",
             "filters": [[1, "in", datelist]]
