@@ -1,1 +1,1 @@
-web: gunicorn CovidData.wsgi --log-file -
+web: gunicorn core.wsgi --log-file=-
