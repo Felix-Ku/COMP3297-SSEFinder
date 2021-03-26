@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'el3i&=il$i^d+_!shgqg2o%dq%n#42o1u*!)tx#vsd^ny5d#g%'
+SECRET_KEY = env('CHP_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['frozen-waters-91223.herokuapp.com', 'localhost', '127.0.0.1']
 
