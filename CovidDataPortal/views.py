@@ -19,8 +19,9 @@ def index(request):
     ## Select form location
     locations = Location_data.objects.filter()
     form = request.POST
-    selected_region = None
-    selected_region = ""  # Default location as Hong Kong
+    selected_region = "Hong Kong"  # Default location as Hong Kong
+    data_status = "Waiting for action"
+
     if request.method == "POST":
         selected_region = request.POST.get("location")
 
@@ -36,11 +37,15 @@ def index(request):
             found = True
             break
 
-    datelist = []
-    for num in range(0, 9):
-        datelist.append((datetime.datetime.today() - datetime.timedelta(days=num)).strftime('%d/%m/%Y'))
+    if (found==False):
+        selected_region = ""
+        location_date = location_pop = location_name = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
 
-    if (found == True):
+    else:
+        datelist = []
+        for num in range(0, 9):
+            datelist.append((datetime.datetime.today() - datetime.timedelta(days=num)).strftime('%d/%m/%Y'))
+
         link = location_api
 
         q = {
@@ -79,10 +84,8 @@ def index(request):
             location_fatalities_new = df["new_fatal"].iloc[-2]
             location_fatalities_new_WeekAvg = round(df["new_fatal"].iloc[-8:-1].mean(), 2)
         else:
-            location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
-    else:
-        location_date = location_pop = location_name = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
-        data_status = "Unsuccessful"
+            location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "FAILED TO RETRIEVED"
+
 
     context = {
         'locations': locations,

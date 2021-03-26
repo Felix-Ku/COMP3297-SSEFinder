@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
-from environs import Env
-env = Env()
-env.read_env()
+
+from environs import Env ### /// Remove for local testing ///
+env = Env() ### /// Remove for local testing ///
+env.read_env() ### /// Remove for local testing ///
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'el3i&=il$i^d+_!shgqg2o%dq%n#42o1u*!)tx#vsd^ny5d#g%'
-SECRET_KEY = env('CHP_SECRET_KEY')
+SECRET_KEY = env('CHP_SECRET_KEY')  ### /// Remove for local testing ///
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -78,9 +79,22 @@ WSGI_APPLICATION = 'CovidData.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-'default': env.dj_db_url('DATABASE_URL')
-}
+
+DATABASES = {  ### /// Remove for local testing ///
+'default': env.dj_db_url('DATABASE_URL')  ### /// Remove for local testing ///
+}  ### /// Remove for local testing ///
+
+# # For local testing
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'location',
+#         'USER': 'felix',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
