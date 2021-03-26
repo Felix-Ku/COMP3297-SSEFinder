@@ -38,7 +38,7 @@ def index(request):
             break
 
     if (found==False):
-        selected_region = ""
+        selected_region = "NONE"
         location_date = location_pop = location_name = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
 
     else:
@@ -84,7 +84,8 @@ def index(request):
             location_fatalities_new = df["new_fatal"].iloc[-2]
             location_fatalities_new_WeekAvg = round(df["new_fatal"].iloc[-8:-1].mean(), 2)
         else:
-            location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "FAILED TO RETRIEVED"
+            location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
+            data_status = "Unsuccessful - Check API or URL links"
 
 
     context = {
