@@ -7,22 +7,22 @@
   <form action = "{% url 'AddLocation' %}" method="post"> {% csrf_token %}
   <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
   <tr>
-    <td>Location : </td>
+    <td>Location : </br> <em>(e.g. Hong Kong)</em></td>
     <td><label for="location"></label><input type="text" name ="location" value ="" /></td>
   </tr>
   </br>
   <tr>
-      <td>Population : </br> <em>(input without comma ",")</em></td>
+      <td>Population : </br> <em>(e.g. 7474200)</em></br> <em>(input without comma ",")</em></td>
     <td><p><label for="Pop"></label><input type="text" name ="Pop" value ="" /></p></td>
   </tr>
 
   <tr>
-    <td>API : </td>
+    <td>API : </br> <em>(e.g. https://api.data.gov.hk/v2/filter)</em></td>
     <td><p><label for="api"></label><input type="text" name ="api" value ="" /></p></td>
 
   </tr>
     <tr>
-    <td>URL : </td>
+    <td>URL : </br> <em>(e.g. http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_covid_19_eng.csv)</em></td>
     <td><p><label for="url"></label><input type="text" name ="url" value ="" /></p></td>
   </tr>
 </table>
