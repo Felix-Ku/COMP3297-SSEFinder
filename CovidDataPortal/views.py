@@ -41,10 +41,10 @@ def index(request):
         datelist.append((datetime.datetime.today() - datetime.timedelta(days=num)).strftime('%d/%m/%Y'))
 
     if (found == True):
-        url = location.url
+        link = location_api
 
         q = {
-            "resource": location.api,
+            "resource": location_url,
             "section": 1,
             "format": "json",
             "filters": [[1, "in", datelist]]
@@ -52,12 +52,12 @@ def index(request):
 
         j = json.dumps(q)
         query_str = urllib.parse.quote(j)
-        url += "?q=" + query_str
+        link += "?q=" + query_str
 
         data_status = "Successful"
 
         try:
-            resp = requests.get(url=url)
+            resp = requests.get(url=link)
             data = resp.json()
             df = pd.DataFrame(data)
         except:
@@ -219,10 +219,10 @@ def index_test(request):
         datelist.append((datetime.datetime.today() - datetime.timedelta(days=num)).strftime('%d/%m/%Y'))
 
     if (found == True):
-        url = location.api
+        link = location_api
 
         q = {
-            "resource": location.url,
+            "resource": location_url,
             "section": 1,
             "format": "json",
             "filters": [[1, "in", datelist]]
@@ -230,12 +230,12 @@ def index_test(request):
 
         j = json.dumps(q)
         query_str = urllib.parse.quote(j)
-        url += "?q=" + query_str
+        link += "?q=" + query_str
 
         data_status = "Successful"
 
         try:
-            resp = requests.get(url=url)
+            resp = requests.get(url=link)
             data = resp.json()
             df = pd.DataFrame(data)
         except:
