@@ -20,7 +20,7 @@ def index(request):
     locations = Location_data.objects.filter()
     form = request.POST
     selected_region = None
-    selected_region = "Hong Kong"  # Default location as Hong Kong
+    selected_region = ""  # Default location
     if request.method == "POST":
         selected_region = request.POST.get("location")
 
@@ -81,7 +81,7 @@ def index(request):
         else:
             location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
     else:
-        location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
+        location_date = location_pop = location_name = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
         data_status = "Unsuccessful"
 
     context = {
