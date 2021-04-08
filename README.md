@@ -35,7 +35,7 @@ Currently, the staff at Centre for Health Protection (CHP) records the data one 
 - PostgreSQL
 
 ### Function of application to be implemented
-- Allow input and store of data by staffs
+- (Through admin page?) Allow input and store of data by staffs
 - Allow staff to search for cases using case number
 - Allow staff to select a case, and allow staff to then input detail information of attendance at social events for it.
     - Venue name (a restaurant name, for example)
@@ -48,8 +48,8 @@ Currently, the staff at Centre for Health Protection (CHP) records the data one 
 - Identify possible SSEs and store them with time specified
 - Allow staff to select date range to view the possible SSE cases
 - Allow access only by epidemiologists
-- Allocate username and password for aforesaid personnel
-- Main the login and personal information of epidemiologists
+- (Through admin page?) Allocate username and password for aforesaid personnel
+- (Through admin page?) Main the login and personal information of epidemiologists
     - username,
     - password,
     - CHP staff number (6-digit string),
