@@ -16,7 +16,7 @@ COMP3297 Group F Project
     - http://
 
 - Google drive：
-    - http://
+    - https://drive.google.com/drive/folders/1hlnsnbRXQHm_aqzXlIS2DP5DncT7ecPf?usp=sharing
 
 - Slack page：
     - http://
