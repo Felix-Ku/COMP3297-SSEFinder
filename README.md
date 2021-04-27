@@ -26,7 +26,7 @@ COMP3297 Group F Project
     - Sprint Burndown Chart screenshot
     - URL of product (Heroku)
     - Source code
-    - Demo (Video?)
+    - Demo (Video)
 
 ## Our links
 
