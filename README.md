@@ -31,7 +31,7 @@ COMP3297 Group F Project
 ## Our links
 
 - Jira page：
-    - http://
+    - https://team-1619182398207.atlassian.net/jira/software/projects/CS/boards/1/roadmap
 
 - Google drive：
     - https://drive.google.com/drive/folders/1hlnsnbRXQHm_aqzXlIS2DP5DncT7ecPf?usp=sharing
