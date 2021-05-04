@@ -7,12 +7,13 @@ COMP3297 Group F Project
 
 - Submission:
     - Vision Document
+        - User Stories
     - Domain Model
-    - Product Backlog (Screenshot)
-    - User Stories
+    - Jira
+        - Product Backlog (Screenshot)
+        - Sprint Burndown Chart screenshot
     - Board Screenshots (3)
-    - Sprint Burndown Chart screenshot
-    - UI Prototypes (as reviewed by client)
+    - [Done] UI Prototypes (as reviewed by client)
     - URL for product increment 
 
 ### Sprint 2 (Deadline: )
