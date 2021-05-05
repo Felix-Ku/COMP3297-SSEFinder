@@ -12,12 +12,14 @@
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 
 </head>
-<body>
+
+  <nav class="navbar navbar-default"> #Testing navbar horizontal
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-2">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">SSE Finder</a>
+    </div>
       {% block sidebar %}
-      <ul class="sidebar-nav">
+      <ul class="nav navbar-nav">
         <h1>Covid Data API</h1>
         </br>
         <li><a href="{% url 'index' %}">Home page</a></li>
@@ -27,12 +29,12 @@
         <li><a href="{% url 'LocationData_list' %}">View location data</a></li>
       </ul>
      {% endblock %}
-      </div>
       <div class="col-sm-10 ">
       {% block content %}{% endblock %}
       </div>
-    </div>
+
   </div>
+  </nav> #Testing navbar horizontal
 
 
     <div style="position: absolute; bottom: 5px; left: 5px;">
