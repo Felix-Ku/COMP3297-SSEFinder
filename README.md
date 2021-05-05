@@ -29,3 +29,10 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 	- Create function for the new page into \Portal\views.py
 	- Add new function and page info into \Portal\urls.py
 	- Create links in base.html
+
+## Extra
+- CMD
+- heroku  login
+- (If new files added) git add --all
+- git commit -m "COMMIT NAME"
+- git push github master / git push heroku master
