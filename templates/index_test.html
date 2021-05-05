@@ -1,13 +1,12 @@
+
+
 {% extends "base.html" %}
 
 {% block content %}
     </br>
 
-  <h1><p style="color:red">TESTING PAGE - Home page</p></h1>
-
-  <p><em>Welcome</em>!</p>
-    <p>Below shows the data for default location Hong Kong,
-      you may also select and filter other locations!</p>
+  <h1>Home page</h1>
+  <p><em>Welcome</em>! This application is made for retrieving coronavirus data from specified location. </p>
     <hr>
 
     <h2>Search & Filter</h2>
@@ -28,22 +27,13 @@
         </form>
         </td>
     </tr>
-    <tr><th scope="row">Date : </th>
-        <td>
-            <div style="text-align: center;">
-
-                {{ dateform.date_field }}
-            </div>
-        </td>
-    </tr>
   </table>
 
     </br>
 
-
-     <p> Selected location: <strong><em>{{ selected_region }}</em></strong></p>
-     <p> Selected date: <strong><em></em></strong></p>
-
+  <p>
+      Selected location: <strong><em><span style="color:red;">{{ selected_region }}</span></em></strong>
+  </p>
 
 
     <hr>
@@ -51,7 +41,7 @@
 
 
   <h2>Query result</h2>
-  <p>Data retrieval status : <strong><em>{{ data_status }}</em></strong></p>
+  <p>Data retrieval status : <strong><em><span style="color:red;">{{ data_status }}</span></em></strong></p>
 
    <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
     <tr>
