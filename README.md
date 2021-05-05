@@ -6,8 +6,6 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 
 ## To-Do
 
-2021-05-05
-
 - Change heroku main directory name
 - Assign functions to groupmates
 	- Models
