@@ -18,10 +18,21 @@
   <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">SSE Finder</a>
+        <a class="navbar-brand" href="{% url 'index' %}">SSE Finder</a>
     </div>
       <ul class="nav navbar-nav">
-        <li class ="active"><a href="{% url 'index' %}">Home page</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Case records
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'Create_record' %}">Create record</a></li>
+          <li><a href="{% url 'Case_query' %}">Case query</a></li>
+          <li><a href="{% url 'Create_attendance' %}">Create attendance</a></li>
+          <li><a href="{% url 'All_cases' %}">All cases</a></li>
+        </ul>
+        </li>
+        <li><a href="{% url 'SSE_Finder' %}">SSE Finder</a></li>
         <li><a href="{% url 'AddLocation' %}">Add location data</a></li>
         <li><a href="{% url 'LocationData_list' %}">View location data</a></li>
       </ul>
