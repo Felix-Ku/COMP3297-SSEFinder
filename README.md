@@ -21,6 +21,7 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 	- Add this res
 		- git remote add github https://github.com/Felix-Ku/COMP3297-SSEFinder.git
 	- Pull all files into your local directory
+		- git pull github master
 
 - Everytime update (Method 1: using Git after setting up)
 	- (If new files added) git add --all
