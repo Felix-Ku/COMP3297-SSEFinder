@@ -19,17 +19,13 @@
         <a class="navbar-brand" href="#">SSE Finder</a>
     </div>
       <div class="col-sm-2">
-      {% block sidebar %}
+
       <ul class="sidebar-nav">
-        <h1>Covid Data API</h1>
-        </br>
         <li><a href="{% url 'index' %}">Home page</a></li>
-        </br>
         <li><a href="{% url 'AddLocation' %}">Add location data</a></li>
-        </br>
         <li><a href="{% url 'LocationData_list' %}">View location data</a></li>
       </ul>
-     {% endblock %}
+
       </div>
 
 
