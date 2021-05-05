@@ -1,0 +1,20 @@
+Project: 
+COMP3297 Pre-project
+
+Author: 
+Ku Sze Hung, Felix 
+
+UID: 
+3035370363
+
+Structure:
+Config_folder = CovidData
+App = CovidDataPortal
+
+Testing: 
+Successfull in local and online production environment
+
+To run in local:
+Modify the Settings.py
+	1. Database settings
+	2. Remove env() stuffs
