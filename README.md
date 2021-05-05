@@ -8,7 +8,7 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 ## Instructions
 
 - Update Heroku
-	- No need manual update, I have set Heroku auto update with this res, after changing things here, wait a while and reload the heroku page to see changes.
+	- No need manual update, I have set Heroku auto update with this res, after changing things here using Git, wait a while and reload the heroku page to see changes.
 
 - Setting up (git)
 	- Login github in local terminal
