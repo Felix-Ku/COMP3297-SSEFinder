@@ -10,6 +10,8 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -18,20 +20,15 @@
     <div class="navbar-header">
         <a class="navbar-brand" href="#">SSE Finder</a>
     </div>
-
-
-      <ul class="sidebar-nav">
+      <ul class="nav navbar-nav">
         <li><a href="{% url 'index' %}">Home page</a></li>
         <li><a href="{% url 'AddLocation' %}">Add location data</a></li>
         <li><a href="{% url 'LocationData_list' %}">View location data</a></li>
       </ul>
-
-
-
-
   </div>
   </nav>
-      <div>
+
+      <div class="container">
       {% block content %}{% endblock %}
       </div>
 
