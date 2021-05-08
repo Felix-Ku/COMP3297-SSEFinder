@@ -5,6 +5,10 @@ from django.views.generic.list import ListView
 
 from .forms import InputForm
 from .forms import dateform
+
+# Import models
+from .models import cases
+
 import json
 import requests
 import urllib.parse
@@ -13,9 +17,31 @@ import datetime
 
 ####################### New views.
 def Create_record(request):
-    context = {
-    }
-    return render(request, 'Create_record.html', context=context)
+
+    # context = {
+    # }
+    # return render(request, 'Create_record.html', context=context)
+
+    if request.method == "POST":
+        form = InputForm(request.POST)
+        if form.is_valid():
+            case_number = request.POST.get('case_number','')
+            person_name = request.POST.get('person_name', '')
+            id_number = request.POST.get('id_number', '')
+            birth_date = request.POST.get('birth_date', '')
+            symptoms_date = request.POST.get('symptoms_date', '')
+            confirmation_date = request.POST.get('confirmation_date', '')
+            location_obj = cases(case_number=case_number, person_name=person_name, id_number=id_number,birth_date=birth_date, symptoms_date=symptoms_date, confirmation_date=confirmation_date)
+            location_obj.save()
+
+            # Add notice telling user of successful input
+            return HttpResponseRedirect(reverse(All_cases)) # Jump to page after input of information
+    else:
+        form = InputForm()
+
+    return render(request, 'Create_record.html', {
+            'form': form,
+        })
 
 def Case_query(request):
     context = {
