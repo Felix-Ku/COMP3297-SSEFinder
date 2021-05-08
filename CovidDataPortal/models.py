@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class case_record(models.Model):
-    case_number = models.IntegerField()
+    case_number = models.IntegerField(primary_key=True)
     person_name = models.CharField(max_length=255)
     id_number = models.CharField(max_length=255)
     birth_date = models.DateField()
@@ -10,7 +10,7 @@ class case_record(models.Model):
     confirmation_date = models.DateField()
 
     def __str__(self): # Add string functions to models
-        return self.case_number
+        return str(self.id)
 
 class attendances(models.Model):
     venue_name = models.CharField(max_length=100)
@@ -21,4 +21,4 @@ class attendances(models.Model):
     description = models.CharField(max_length=200)
 
     def __str__(self): # Add string functions to models
-        return self.venue_name
+        return str(self.id)
