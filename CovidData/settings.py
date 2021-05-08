@@ -136,3 +136,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+LOGIN_REDIRECT_URL = '/'
