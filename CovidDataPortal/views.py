@@ -72,13 +72,13 @@ def Case_query(request):
 
     target_case = ""
     found = ""
-    cases = case_records.objects.filter()
+    cases = case_records.objects.all()
 
     if request.method == "POST":
         found = False
         selected_case = request.POST.get("case_number")
         for case in cases:
-            if case.case_number == selected_case:
+            if case.case_number == str(selected_case):
                 target_case = case
                 found = True
                 break
