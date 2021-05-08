@@ -95,7 +95,8 @@ def Case_query(request):
 
     context = {
         'target_case': target_case,
-        'message': message
+        'message': message,
+        'cases': cases
     }
 
     return render(request, 'Case_query.html', context=context)
