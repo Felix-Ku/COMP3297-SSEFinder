@@ -72,20 +72,18 @@ def Case_query(request):
 
     target_case = ""
     found = ""
+    cases = case_records.objects.filter()
 
     if request.method == "POST":
         found = False
         selected_case = request.POST.get("case_number")
+        for case in cases:
+            if case.case_number == selected_case:
+                target_case = case
+                found = True
+                break
 
     ### Extract data of location
-    cases = case_records.objects.filter()
-    for case in cases:
-        if case.case_number == selected_case:
-            target_case = case
-            found = True
-            break
-
-
     if found == False:
         message = "Case not found!"
     elif found == True:
