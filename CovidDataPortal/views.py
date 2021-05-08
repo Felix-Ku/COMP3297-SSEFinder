@@ -69,8 +69,32 @@ def Create_record(request):
 #         })
 
 def Case_query(request):
+
+    found = False
+    message = "Awaiting search action..."
+    target_case = ""
+
+    if request.method == 'GET':  # If the form is submitted
+        search_query = request.GET.get('search_box', None)
+
+    cases = case_records.objects.all()
+
+    for case in cases:
+        if case.case_number == search_query:
+            target_case=case
+            found = True
+            break
+
+    if found == False:
+        message = "Case not found!"
+    else:
+        message = "Case found!"
+
     context = {
+        'message': message,
+        'target_case': target_case
     }
+
     return render(request, 'Case_query.html', context=context)
 
 def Create_attendance(request):

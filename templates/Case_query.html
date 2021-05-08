@@ -5,4 +5,36 @@
   <h1>Case query</h1>
   </br>
 
+      <p>
+      System status: <strong><em><span style="color:red;">{{ message }}</span></em></strong>
+  </p>
+
+  <form type="get" action="." style="margin: 0">
+    <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+    <button id="search_submit" type="search" >Submit</button>
+  </form>
+
+        <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Case Number</th>
+                <th>Person Name</th>
+                <th>Identity Document Number</th>
+                <th>Date of birth</th>
+                <th>Date of Onset</th>
+                <th>Date Case Confirmed</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ target_case.target_case }}</td>
+                    <td>{{ target_case.person_name }}</td>
+                    <td>{{ target_case.id_number }}</td>
+                    <td>{{ target_case.birth_date }}</td>
+                    <td>{{ target_case.symptoms_date }}</td>
+                    <td>{{ target_case.confirmation_date }}</td>
+                </tr>
+        </tbody>
+    </table>
+
 {% endblock %}
