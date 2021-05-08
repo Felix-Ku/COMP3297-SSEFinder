@@ -4,7 +4,7 @@ from .models import *
 
 class CaseInputForm(forms.ModelForm):
     class Meta:
-        model = case_record
+        model = case_records
         fields = '__all__'
         widgets = {
             'case_number': forms.NumberInput(attrs={'class': 'form-control'}),
