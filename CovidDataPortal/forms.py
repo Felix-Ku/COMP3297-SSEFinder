@@ -10,9 +10,9 @@ class CaseInputForm(forms.ModelForm):
             'case_number': forms.NumberInput(attrs={'class': 'form-control'}),
             'person_name': forms.TextInput(attrs={'class': 'form-control'}),
             'id_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
-            'symptoms_date': forms.DateInput(attrs={'class': 'form-control'}),
-            'confirmation_date': forms.DateInput(attrs={'class': 'form-control'}),
+            'birth_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'symptoms_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'confirmation_date': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 

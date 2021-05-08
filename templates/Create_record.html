@@ -2,16 +2,16 @@
 
 {% block content %}
   <h1>Create case record</h1>
-{#<form action="" method="POST">#}
-{#    {% csrf_token %}#}
-{#    <div class="form-group">#}
-{#        <div class="form-group col-md-6">#}
-{##}
-{#            {{ form }}#}
-{##}
-{#            <input class="btn btn-success" type="submit" value="Save" />#}
-{#        </div>#}
-{#    </div>#}
-{#</form>#}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="form-group col-md-6">
+
+            {{ form }}
+
+            <input class="btn btn-success" type="submit" value="Save" />
+        </div>
+    </div>
+</form>
 
 {% endblock %}

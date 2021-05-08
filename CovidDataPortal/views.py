@@ -19,25 +19,25 @@ import datetime
 ####################### New views.
 def Create_record(request):
 
-    # cases = case_records.objects.all()
-    #
-    # form = CaseInputForm()
-    #
-    # if request.method == "POST":
-    #     form = CaseInputForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #     return redirect(All_cases)
-    # context = {
-    #     'cases': cases,
-    #     'form': form
-    # }
-    #
-    # return render(request, 'Create_record.html', context)
+    cases = case_records.objects.all()
 
+    form = CaseInputForm()
+
+    if request.method == "POST":
+        form = CaseInputForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(All_cases)
     context = {
+        'cases': cases,
+        'form': form
     }
-    return render(request, 'Create_record.html', context=context)
+
+    return render(request, 'Create_record.html', context)
+
+    # context = {
+    # }
+    # return render(request, 'Create_record.html', context=context)
 
 # Backup class (not working)
 # def Create_record(request):
