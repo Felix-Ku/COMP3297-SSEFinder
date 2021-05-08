@@ -15,14 +15,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for cases in case_records %}
+            {% for case in cases %}
                 <tr>
-                    <td>{{ cases.case_number }}</td>
-                    <td>{{ cases.person_name }}</td>
-                    <td>{{ cases.id_number }}</td>
-                    <td>{{ cases.birth_date }}</td>
-                    <td>{{ cases.symptoms_date }}</td>
-                    <td>{{ cases.confirmation_date }}</td>
+                    <td>{{ case.case_number }}</td>
+                    <td>{{ case.person_name }}</td>
+                    <td>{{ case.id_number }}</td>
+                    <td>{{ case.birth_date }}</td>
+                    <td>{{ case.symptoms_date }}</td>
+                    <td>{{ case.confirmation_date }}</td>
                 </tr>
             {% endfor %}
         </tbody>
