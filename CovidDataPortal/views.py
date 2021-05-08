@@ -37,7 +37,7 @@ def Create_record(request):
             # Add notice telling user of successful input
             return HttpResponseRedirect(reverse(All_cases)) # Jump to page after input of information
     else:
-        form = InputForm()
+        form = CaseInputForm()
 
     return render(request, 'Create_record.html', {
             'form': form,
