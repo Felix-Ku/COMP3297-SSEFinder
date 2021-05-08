@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('CovidDataPortal/', include('CovidDataPortal.urls')),
     path('', RedirectView.as_view(url='/CovidDataPortal/')),
+    path('accounts/', include('django.contrib.auth.urls')) #forloginauthentication
 
 ]
 
