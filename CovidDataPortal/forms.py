@@ -16,12 +16,4 @@ class CaseInputForm(forms.ModelForm):
             'confirmation_date': forms.DateInput(attrs={'class': 'form-control'}),
         }
 
-class ExpenseModelForm(forms.ModelForm):
-    class Meta:
-        model = Expense
-        fields = '__all__'
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'price': forms.NumberInput(attrs={'class': 'form-control'})
-        }
 

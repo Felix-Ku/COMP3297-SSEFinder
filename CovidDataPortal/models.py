@@ -2,9 +2,9 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class cases(models.Model):
-    case_number = models.IntegerField(unique=True, primary_key=True)
-    person_name = models.CharField(max_length=50)
-    id_number = models.CharField(max_length=10, unique=True)
+    case_number = models.IntegerField()
+    person_name = models.CharField(max_length=255)
+    id_number = models.CharField(max_length=255)
     birth_date = models.DateField()
     symptoms_date = models.DateField()
     confirmation_date = models.DateField()
