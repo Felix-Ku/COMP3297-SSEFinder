@@ -78,7 +78,7 @@ def Case_query(request):
         found = False
         selected_case = request.POST.get("case_number")
         for case in cases:
-            if case.case_number == str(selected_case):
+            if case.case_number == selected_case:
                 target_case = case
                 found = True
                 break
