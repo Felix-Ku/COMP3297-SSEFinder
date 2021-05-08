@@ -6,13 +6,18 @@
   </br>
 
       <p>
-      System status: <strong><em><span style="color:red;">{{ message }}</span></em></strong>
+      System status: <strong><em><span style="color:red;">
+          {% if error_msg %}
+            {{ error_msg }}
+          {% endif %}
+      </span></em></strong>
   </p>
 
-  <form type="get" action="." style="margin: 0">
-    <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
-    <button id="search_submit" type="search" >Submit</button>
-  </form>
+  <form method="get" action="/search/">
+  {% csrf_token %}
+  <input type="search" placeholder="search" required>
+  <button type="submit">search</button>
+</form>
 
         <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -26,14 +31,16 @@
             </tr>
         </thead>
         <tbody>
+            {% for case in target_case %}
                 <tr>
-                    <td>{{ target_case.case_number }}</td>
-                    <td>{{ target_case.person_name }}</td>
-                    <td>{{ target_case.id_number }}</td>
-                    <td>{{ target_case.birth_date }}</td>
-                    <td>{{ target_case.symptoms_date }}</td>
-                    <td>{{ target_case.confirmation_date }}</td>
+                    <td>{{ case.case_number }}</td>
+                    <td>{{ case.person_name }}</td>
+                    <td>{{ case.id_number }}</td>
+                    <td>{{ case.birth_date }}</td>
+                    <td>{{ case.symptoms_date }}</td>
+                    <td>{{ case.confirmation_date }}</td>
                 </tr>
+            {% endfor %}
         </tbody>
     </table>
 
