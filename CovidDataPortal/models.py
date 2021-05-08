@@ -29,3 +29,9 @@ class case_records(models.Model):
 
     def __str__(self): # Add string functions to models
         return self.case_number
+
+class case_recordss(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):  # Add string functions to models
+        return self.name
