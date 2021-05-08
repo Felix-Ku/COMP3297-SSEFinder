@@ -7,7 +7,7 @@ from .forms import CaseInputForm
 from django.shortcuts import render
 
 # Import models
-from .models import cases
+from .models import case_record
 from django.shortcuts import render, redirect
 
 import json
@@ -19,7 +19,7 @@ import datetime
 ####################### New views.
 def Create_record(request):
 
-    casess = cases.objects.all()
+    cases = case_record.objects.all()
 
     form = CaseInputForm()
 
@@ -29,7 +29,7 @@ def Create_record(request):
             form.save()
         return redirect(All_cases)
     context = {
-        'casess': casess,
+        'cases': cases,
         'form': form
     }
 

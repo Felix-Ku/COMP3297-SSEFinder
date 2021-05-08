@@ -85,7 +85,7 @@ DATABASES = {  ### /// Remove for local testing ///
 'default': env.dj_db_url('DATABASE_URL')  ### /// Remove for local testing ///
 }  ### /// Remove for local testing ///
 
-# # Unremove For local testing
+# Unremove For local testing
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
