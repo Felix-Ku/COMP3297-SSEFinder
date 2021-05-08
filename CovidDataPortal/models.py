@@ -15,9 +15,9 @@ class cases(models.Model):
     case_number = models.IntegerField(primary_key=True)
     person_name = models.CharField(max_length=50)
     id_number = models.CharField(max_length=10, unique=True)
-    birth_date = models.DateField()
-    symptoms_date = models.DateField()
-    confirmation_date = models.DateField()
+    birth_date = models.DateTimeField()
+    symptoms_date = models.DateTimeField()
+    confirmation_date = models.DateTimeField()
 
     def __str__(self): # Add string functions to models
         return self.case_number
