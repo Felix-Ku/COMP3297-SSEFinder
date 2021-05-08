@@ -1,45 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    </br>
   <h1>Create case record</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="form-group col-md-6">
 
-  <form action = "{% url 'Create_record' %}" method="post"> {% csrf_token %}
-  <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+            {{ form }}
 
-  <tr>
-    <td>Case number : </br> <em>(e.g. 123456)</em></td>
-    <td><label for="case_number"></label><input type="text" name ="case_number" value ="" /></td>
-  </tr>
-
-  <tr>
-      <td>Person name : </br> <em>(e.g. )</em></td>
-    <td><p><label for="person_name"></label><input type="text" name ="person_name" value ="" /></p></td>
-  </tr>
-
-  <tr>
-    <td>Identity Document Number : </br> <em>(e.g. )</em></td>
-    <td><p><label for="id_number"></label><input type="text" name ="id_number" value ="" /></p></td>
-  </tr>
-
-    <tr>
-    <td>Date of birth : </br> <em></em>(e.g. )</td>
-    <td><p><label for="birth_date"></label><input type="text" name ="birth_date" value ="" /></p></td>
-  </tr>
-
-   <tr>
-    <td>Date of onset of symptoms : </br> <em>(e.g. )</em></td>
-    <td><p><label for="symptoms_date"></label><input type="text" name ="symptoms_date" value ="" /></p></td>
-  </tr>
-
-   <tr>
-    <td>Date of confirmation of infection by testing : </br> <em>(e.g. )</em></td>
-    <td><p><label for="confirmation_date"></label><input type="text" name ="confirmation_date" value ="" /></p></td>
-  </tr>
-
-</table>
-      </br>
-  <input type="submit" value="Submit"/>
-  </form>
+            <input class="btn btn-success" type="submit" value="Save" />
+        </div>
+    </div>
+</form>
 
 {% endblock %}

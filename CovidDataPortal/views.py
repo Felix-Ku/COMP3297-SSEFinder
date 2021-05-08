@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic.list import ListView
 
 from .forms import CaseInputForm
-from .forms import dateform
+from django.shortcuts import render
 
 # Import models
 from .models import cases
@@ -18,30 +18,41 @@ import datetime
 ####################### New views.
 def Create_record(request):
 
-    # context = {
-    # }
-    # return render(request, 'Create_record.html', context=context)
+    form = CaseInputForm()
 
-    if request.method == "POST":
-        form = CaseInputForm(request.POST)
-        if form.is_valid():
-            case_number = request.POST.get('case_number','')
-            person_name = request.POST.get('person_name', '')
-            id_number = request.POST.get('id_number', '')
-            birth_date = request.POST.get('birth_date', '')
-            symptoms_date = request.POST.get('symptoms_date', '')
-            confirmation_date = request.POST.get('confirmation_date', '')
-            cases_obj = cases(case_number=case_number, person_name=person_name, id_number=id_number,birth_date=birth_date, symptoms_date=symptoms_date, confirmation_date=confirmation_date)
-            cases_obj.save()
+    context = {
+        'form':form
+    }
 
-            # Add notice telling user of successful input
-            return HttpResponseRedirect(reverse(All_cases)) # Jump to page after input of information
-    else:
-        form = CaseInputForm()
+    return render(request, 'Create_record.html', context)
 
-    return render(request, 'Create_record.html', {
-            'form': form,
-        })
+# Backup class (not working)
+# def Create_record(request):
+#
+#     # context = {
+#     # }
+#     # return render(request, 'Create_record.html', context=context)
+#
+#     if request.method == "POST":
+#         form = CaseInputForm(request.POST)
+#         if form.is_valid():
+#             case_number = request.POST.get('case_number','')
+#             person_name = request.POST.get('person_name', '')
+#             id_number = request.POST.get('id_number', '')
+#             birth_date = request.POST.get('birth_date', '')
+#             symptoms_date = request.POST.get('symptoms_date', '')
+#             confirmation_date = request.POST.get('confirmation_date', '')
+#             cases_obj = cases(case_number=case_number, person_name=person_name, id_number=id_number,birth_date=birth_date, symptoms_date=symptoms_date, confirmation_date=confirmation_date)
+#             cases_obj.save()
+#
+#             # Add notice telling user of successful input
+#             return HttpResponseRedirect(reverse(All_cases)) # Jump to page after input of information
+#     else:
+#         form = CaseInputForm()
+#
+#     return render(request, 'Create_record.html', {
+#             'form': form,
+#         })
 
 def Case_query(request):
     context = {
