@@ -20,4 +20,4 @@ class cases(models.Model):
     confirmation_date = models.DateField()
 
     def __str__(self): # Add string functions to models
-        return self.name
+        return self.case_number

@@ -31,8 +31,8 @@ def Create_record(request):
             birth_date = request.POST.get('birth_date', '')
             symptoms_date = request.POST.get('symptoms_date', '')
             confirmation_date = request.POST.get('confirmation_date', '')
-            location_obj = cases(case_number=case_number, person_name=person_name, id_number=id_number,birth_date=birth_date, symptoms_date=symptoms_date, confirmation_date=confirmation_date)
-            location_obj.save()
+            cases_obj = cases(case_number=case_number, person_name=person_name, id_number=id_number,birth_date=birth_date, symptoms_date=symptoms_date, confirmation_date=confirmation_date)
+            cases_obj.save()
 
             # Add notice telling user of successful input
             return HttpResponseRedirect(reverse(All_cases)) # Jump to page after input of information
