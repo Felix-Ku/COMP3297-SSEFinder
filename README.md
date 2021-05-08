@@ -11,7 +11,7 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 	- Models
 	- Functions
 
-## Instructions
+## Coding instructions
 
 - Update Heroku
 	- No need manual update, I have set Heroku auto update with this res, after changing things here using Git, wait a while and reload the heroku page to see changes.
@@ -30,6 +30,20 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 
 - Everytime update (Method 2: Directly editing files on Github)
 	- Just edit the files and commit changes
+
+- *Update Models
+	- Comment codes in settings.py
+	- Uncomment local codes in settings.py
+	- Run : python manage.py makemigrations CovidDataPortal
+	- Run : python manage.py migrate
+	- git add --all
+	- git commit
+	- push
+	- heroku run python mamange.py makemigrations CovidDataPortal
+	- heroku run python manage.py migrate CovidDataPortal
+
+- Check error logs
+	- heroku logs tail--
 
 - To add new pages:
 	- Add new template pages inside \templates\
