@@ -23,3 +23,7 @@ class attendances(models.Model):
 
     def __str__(self): # Add string functions to models
         return self.venue_name
+
+class Expense(models.Model):
+    name = models.CharField(max_length=255)  #花費項目
+    price = models.IntegerField() #金額
