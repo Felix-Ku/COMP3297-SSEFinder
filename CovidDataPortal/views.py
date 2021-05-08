@@ -77,7 +77,7 @@ def Case_query(request):
         error_msg = 'Please input Case Number'
         return render(request, 'Case_query.html', {'error_msg': error_msg})
 
-    target_case = case_records.objects.filter(title__icontains=q)
+    target_case = case_records.objects.filter(case_number__icontains=q)
 
 
     # message = "Awaiting search action..."
