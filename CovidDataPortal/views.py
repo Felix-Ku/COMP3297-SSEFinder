@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic.list import ListView
 
-from .forms import InputForm
+from .forms import CaseInputForm
 from .forms import dateform
 
 # Import models
@@ -23,7 +23,7 @@ def Create_record(request):
     # return render(request, 'Create_record.html', context=context)
 
     if request.method == "POST":
-        form = InputForm(request.POST)
+        form = CaseInputForm(request.POST)
         if form.is_valid():
             case_number = request.POST.get('case_number','')
             person_name = request.POST.get('person_name', '')
