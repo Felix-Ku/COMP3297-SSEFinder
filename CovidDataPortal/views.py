@@ -105,6 +105,19 @@ def Case_query(request):
     return render(request, 'Case_query.html', {'error_msg': error_msg,
                                                  'target_case': target_case})
 
+def search(request):
+
+    q = request.GET.get('q')
+    error_msg = ''
+
+    if not q:
+        error_msg = 'Please input Case Number'
+        return render(request, 'Case_query.html', {'error_msg': error_msg})
+
+    target_case = case_records.objects.filter(case_number__icontains=q)
+    return render(request, 'Case_query.html', {'error_msg': error_msg,
+                                                 'target_case': target_case})
+
 def Create_attendance(request):
     context = {
     }

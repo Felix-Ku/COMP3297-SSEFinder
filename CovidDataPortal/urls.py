@@ -14,4 +14,5 @@ urlpatterns = [
     path('Case_records/Case_query/', views.Case_query, name='Case_query'),
     path('Case_records/Create_attendance/', views.Create_attendance, name='Create_attendance'),
     path('SSE_Finder/', views.SSE_Finder, name='SSE_Finder'),
+    path(r'^search/$', views.search, name='search'),
 ]
