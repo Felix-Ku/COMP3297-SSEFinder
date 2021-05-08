@@ -70,53 +70,36 @@ def Create_record(request):
 
 def Case_query(request):
 
-    q = request.GET.get('q')
-    error_msg = ''
+    target_case = ""
+    found = ""
 
-    if not q:
-        error_msg = 'Please input Case Number'
-        return render(request, 'Case_query.html', {'error_msg': error_msg})
+    if request.method == "POST":
+        found = False
+        selected_case = request.POST.get("case_number")
 
-    target_case = case_records.objects.filter(case_number__icontains=q)
+    ### Extract data of location
+    cases = case_records.objects.filter()
+    for case in cases:
+        if case.case_number == selected_case:
+            target_case = case
+            found = True
+            break
 
 
-    # message = "Awaiting search action..."
-    # target_case = ""
-    #
-    # if request.method == 'GET':  # If the form is submitted
-    #     search_query = request.GET.get('search_box', None)
-    #     found = False
-    #     cases = case_records.objects.all()
-    #     for case in cases:
-    #         if case.case_number == str(search_query):
-    #             target_case = case
-    #             found = True
-    #             break
-    #     if found == False:
-    #         message = "Case not found!"
-    #     else:
-    #         message = "Case found!"
-    #
-    # context = {
-    #     'message': message,
-    #     'target_case': target_case
-    # }
+    if found == False:
+        message = "Case not found!"
+    elif found == True:
+        message = "Case found!"
+    else:
+        message = "Awaiting action"
 
-    return render(request, 'Case_query.html', {'error_msg': error_msg,
-                                                 'target_case': target_case})
+    context = {
+        'target_case': target_case,
+        'message': message
+    }
 
-def search(request):
+    return render(request, 'Case_query.html', context=context)
 
-    q = request.GET.get('q')
-    error_msg = ''
-
-    if not q:
-        error_msg = 'Please input Case Number'
-        return render(request, 'Case_query.html', {'error_msg': error_msg})
-
-    target_case = case_records.objects.filter(case_number__icontains=q)
-    return render(request, 'Case_query.html', {'error_msg': error_msg,
-                                                 'target_case': target_case})
 
 def Create_attendance(request):
     context = {
