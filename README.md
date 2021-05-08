@@ -40,7 +40,7 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 	- git commit
 	- push
 	- heroku run python mamange.py makemigrations CovidDataPortal
-	- heroku run python manage.py migrate
+	- heroku run python manage.py migrate CovidDataPortal
 
 - Check error logs
 	- heroku logs tail--
