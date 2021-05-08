@@ -1,15 +1,17 @@
 from django import forms
+from django.forms import ModelForm, DateField
 
-class DateInput(forms.DateInput):
-    input_type = "date"
 
 class CaseInputForm(forms.Form):
     case_number = forms.IntegerField()
     person_name = forms.CharField()
     id_number = forms.CharField()
-    birth_date = forms.DateField(widget=DateInput)
-    symptoms_date = forms.DateField(widget=DateInput)
-    confirmation_date = forms.DateField(widget=DateInput)
+    birth_date = DateField(input_formats=['%d-%m-%Y'])
+    symptoms_date = DateField(input_formats=['%d-%m-%Y'])
+    confirmation_date = DateField(input_formats=['%d-%m-%Y'])
+
+class DateInput(forms.DateInput):
+    input_type = "date"
 
 class dateform(forms.Form):
     date_field = forms.DateField(widget=DateInput)
