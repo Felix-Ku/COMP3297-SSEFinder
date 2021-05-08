@@ -12,7 +12,7 @@ class Location_data(models.Model):
         return self.name
 
 class cases(models.Model):
-    case_number = models.IntegerField(primary_key=True)
+    case_number = models.IntegerField()
     # person_name = models.CharField(max_length=50)
     # id_number = models.CharField(max_length=10, unique=True)
     # birth_date = models.DateTimeField()
