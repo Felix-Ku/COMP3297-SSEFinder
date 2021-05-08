@@ -27,10 +27,11 @@ def Create_record(request):
         form = CaseInputForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect(All_cases)
+        return redirect(All_cases_success)
     context = {
         'cases': cases,
         'form': form
+
     }
 
     return render(request, 'Create_record.html', context)
@@ -78,9 +79,22 @@ def Create_attendance(request):
     return render(request, 'Create_attendance.html', context=context)
 
 def All_cases(request):
+
+    cases = case_records.objects.all()
+
     context = {
+        'cases': cases
     }
     return render(request, 'All_cases.html', context=context)
+
+def All_cases_success(request):
+
+    cases = case_records.objects.all()
+
+    context = {
+        'cases': cases
+    }
+    return render(request, 'All_cases_success.html', context=context)
 
 def SSE_Finder(request):
     context = {

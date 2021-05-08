@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>Create case record</h1>
+
 <form action="" method="POST">
     {% csrf_token %}
     <div class="form-group">
@@ -9,9 +10,11 @@
 
             {{ form }}
 
-            <input class="btn btn-success" type="submit" value="Save" />
+            <input class="btn btn-success" type="submit" value="Create" />
         </div>
     </div>
 </form>
+
+
 
 {% endblock %}
