@@ -5,7 +5,6 @@ from django.views.generic.list import ListView
 
 from .forms import InputForm
 from .forms import dateform
-from .models import Location_data
 import json
 import requests
 import urllib.parse
