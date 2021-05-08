@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class cases(models.Model):
-    case_number = models.IntegerField()
+    case_number = models.IntegerField(primary_key=True)
     person_name = models.CharField(max_length=255)
     id_number = models.CharField(max_length=255)
     birth_date = models.DateField()
@@ -23,7 +23,3 @@ class attendances(models.Model):
 
     def __str__(self): # Add string functions to models
         return self.venue_name
-
-class Expense(models.Model):
-    name = models.CharField(max_length=255)  #花費項目
-    price = models.IntegerField() #金額

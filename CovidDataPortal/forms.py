@@ -1,6 +1,5 @@
 from django import forms
 from .models import *
-from .models import Expense
 
 
 class CaseInputForm(forms.ModelForm):
