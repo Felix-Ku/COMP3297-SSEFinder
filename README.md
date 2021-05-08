@@ -6,7 +6,7 @@ COMP3297 Group F Project
 ### Sprint 1 (Deadline: )
 
 - Submission:
-    - Vision Document
+    - [Done]Vision Document
         - User Stories
     - Domain Model
     - Jira
@@ -67,8 +67,8 @@ Currently, the staff at Centre for Health Protection (CHP) records the data one 
 - Identify possible SSEs and store them with time specified
 - Allow staff to select date range to view the possible SSE cases
 - Allow access only by epidemiologists
-- (Through admin page?) Allocate username and password for aforesaid personnel
-- (Through admin page?) Main the login and personal information of epidemiologists
+-  Allocate username and password for aforesaid personnel through Django Admin page
+-  Maintain the login and personal information of epidemiologists through Django Admin page
     - username,
     - password,
     - CHP staff number (6-digit string),
