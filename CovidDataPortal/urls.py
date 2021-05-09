@@ -3,6 +3,8 @@ from django.urls import path
 from CovidDataPortal import views
 from django.contrib.auth.views import LoginView
 
+app_name = 'CovidDataPortal'
+
 urlpatterns = [
     path('home/', views.index, name='index'),
     #### Old urls
