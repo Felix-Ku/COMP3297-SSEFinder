@@ -25,7 +25,7 @@ import datetime
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse('login.html'))
+    return HttpResponseRedirect(reverse('login'))
 
 def Create_record(request):
 
@@ -362,5 +362,3 @@ def login(request):
 #         "object_list": queryset
 #     }
 #     return render(request, 'LocationData_list.html', context=context)
-
-
