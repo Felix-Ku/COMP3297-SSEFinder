@@ -9,16 +9,14 @@
       System status: <strong><em><span style="color:red;">{{ message }}</span></em></strong>
   </p>
 
-        <form method="POST"> {% csrf_token %}
-            <select name="case_number">
-                {% for case in cases %}
-                    <option value="{{ case.case_number }}">
-                        {{ case.case_number }}
-                    </option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Select">
-        </form>
+        <form>
+                        <div class="input-group">
+                            <input name="q" type="text" placeholder="Search" class="form-control form-control-lg" />
+                            <div class="input-group-append">
+                                <button class="btn btn-dark btn-lg">Search</button>
+                            </div>
+                        </div>
+                    </form>
     </br>
 
         <table class="table table-bordered table-striped">
@@ -33,14 +31,17 @@
             </tr>
         </thead>
         <tbody>
+                        {% for case in cases %}
+
                 <tr>
-                    <td>{{ target_case.case_number }}</td>
-                    <td>{{ target_case.person_name }}</td>
-                    <td>{{ target_case.id_number }}</td>
-                    <td>{{ target_case.birth_date }}</td>
-                    <td>{{ target_case.symptoms_date }}</td>
-                    <td>{{ target_case.confirmation_date }}</td>
+                    <td>{{ case.case_number }}</td>
+                    <td>{{ case.person_name }}</td>
+                    <td>{{ case.id_number }}</td>
+                    <td>{{ case.birth_date }}</td>
+                    <td>{{ case.symptoms_date }}</td>
+                    <td>{{ case.confirmation_date }}</td>
                 </tr>
+        {% endfor %}
         </tbody>
     </table>
 

@@ -70,34 +70,42 @@ def Create_record(request):
 
 def Case_query(request):
 
-    target_case = ""
-    found = ""
-    cases = case_records.objects.all()
-
-    if request.method == "POST":
-        found = False
-        selected_case = request.POST.get("case_number")
-        for case in cases:
-            if case.case_number == selected_case:
-                target_case = case
-                found = True
-                break
-
-    ### Extract data of location
-    if found == False:
-        message = "Case not found!"
-    elif found == True:
-        message = "Case found!"
+    if 'q' in request.GET:
+        q = request.GET['q']
+        cases = case_records.objects.filter(case_number__icontains=q)
     else:
-        message = "Awaiting action"
+        cases = case_records.objects.all()
 
-    context = {
-        'target_case': target_case,
-        'message': message,
-        'cases': cases
-    }
+    return render(request, 'Case_query.html', {'cases': cases})
 
-    return render(request, 'Case_query.html', context=context)
+    # target_case = ""
+    # found = ""
+    # cases = case_records.objects.all()
+    #
+    # if request.method == "POST":
+    #     found = False
+    #     selected_case = request.POST.get("case_number")
+    #     for case in cases:
+    #         if case.case_number == selected_case:
+    #             target_case = case
+    #             found = True
+    #             break
+    #
+    # ### Extract data of location
+    # if found == False:
+    #     message = "Case not found!"
+    # elif found == True:
+    #     message = "Case found!"
+    # else:
+    #     message = "Awaiting action"
+    #
+    # context = {
+    #     'target_case': target_case,
+    #     'message': message,
+    #     'cases': cases
+    # }
+    #
+    # return render(request, 'Case_query.html', context=context)
 
 
 def Create_attendance(request):
