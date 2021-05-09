@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CovidDataPortal.apps.CoviddataportalConfig',
-    'user',
+    #'user',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +138,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
-AUTH_USER_MODEL = 'user.User'
+#AUTH_USER_MODEL = 'user.User'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
