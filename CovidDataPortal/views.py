@@ -174,7 +174,7 @@ def index(request):
 def login(request):
     context = {
     }
-    return render(request, 'registration/login.html', context=context)
+    return render(request, 'accounts/login.html', context=context)
 
     # ## Select form location
     # locations = Location_data.objects.filter()
