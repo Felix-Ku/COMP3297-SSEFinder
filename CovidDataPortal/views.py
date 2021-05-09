@@ -18,9 +18,9 @@ import pandas as pd
 import datetime
 
 ####################### New views.
-@login_required
-def home(request):
-    return render(request, 'home.html', {'username': request.user.username})
+# @login_required
+# def home(request):
+#     return render(request, 'home.html', {'username': request.user.username})
 
 def Create_record(request):
 
