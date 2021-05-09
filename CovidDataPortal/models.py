@@ -24,7 +24,7 @@ class attendances(models.Model):
 
     def __str__(self): # Add string functions to models
         return str(self.id)
-
+"""
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     staffnum = models.IntegerField()
@@ -34,3 +34,4 @@ class Account(models.Model):
 
     def __str__(self):
         return f'{self.user.username} - Personal Info'
+"""
