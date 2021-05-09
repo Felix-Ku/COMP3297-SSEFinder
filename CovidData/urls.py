@@ -22,7 +22,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
     path('CovidDataPortal/', include('CovidDataPortal.urls')),
     path('', RedirectView.as_view(url='/CovidDataPortal/')),
     path('accounts/', include('django.contrib.auth.urls')) #forloginauthentication
