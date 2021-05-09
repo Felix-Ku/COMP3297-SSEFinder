@@ -117,9 +117,30 @@ def Case_query(request):
 
 
 def Create_attendance(request):
-    context = {
-    }
-    return render(request, 'Create_attendance.html', context=context)
+    if 'q' in request.GET and request.GET['q']:
+        # If yes search action
+        q = request.GET['q']
+        case = case_records.objects.all().filter(case_number=q)
+
+        if len(case) == 0:
+            status = "Case not found!"
+            Selected = "None"
+            cases= None
+        elif len(case) == 1:
+            status = "Case found!"
+            Selected = str(q)
+            cases = case
+        elif len(case) >1:
+            status = "Cases with duplicate number found, please check your database."
+            Selected = "None"
+            cases = None
+
+    else: # If no search action
+        cases = None
+        Selected = "None"
+        status = "Awaiting search action, please input a search."
+
+    return render(request, 'Create_attendance.html', {'cases': cases, 'Selected': Selected, 'status': status})
 
 def All_cases(request):
 

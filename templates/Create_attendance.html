@@ -4,5 +4,49 @@
   </br>
   <h1>Create attendance</h1>
   </br>
+    <p>
+      <strong>Please supply a case number for the attendance record:</strong>
+    </p>
+        <form>{% csrf_token %}
+                        <div class="input-group">
+                            <input name="q" type="text" placeholder="Search" class="form-control form-control-lg" />
+                            <div class="input-group-append">
+                                <button class="btn btn-dark btn-lg">Search</button>
+                            </div>
+                        </div>
+                    </form>
+    </br>
+    <hr>
+    <p>
+      Selection status: <strong><em><span style="color:red;">{{ status }}</span></em></strong>
+    </p>
+    <p>
+      Selected case: <strong><em><span style="color:red;">{{ Selected }}</span></em></strong>
+    </p>
+    <p>
+      <strong>Input details to create new attendance record:</strong>
+    </p>
+        <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Case Number</th>
+                <th>Person Name</th>
+                <th>Identity Document Number</th>
+                <th>Date of birth</th>
+                <th>Date of Onset</th>
+                <th>Date Case Confirmed</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ case.case_number }}</td>
+                    <td>{{ case.person_name }}</td>
+                    <td>{{ case.id_number }}</td>
+                    <td>{{ case.birth_date }}</td>
+                    <td>{{ case.symptoms_date }}</td>
+                    <td>{{ case.confirmation_date }}</td>
+                </tr>
+        </tbody>
+    </table>
 
 {% endblock %}

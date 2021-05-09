@@ -21,4 +21,4 @@ class case_records(models.Model):
     confirmation_date = models.CharField(max_length=255)
 
     def __str__(self): # Add string functions to models
-        return self.case_number
+        return str(self.case_number)
