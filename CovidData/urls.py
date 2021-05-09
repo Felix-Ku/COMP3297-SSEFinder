@@ -24,11 +24,9 @@ import django.contrib.auth.views as auth_view
 from CovidDataPortal import views
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    url('login/', auth_view.LoginView, {'template_name': 'login.html'}, name='login'),
-    url('logout/', auth_view.LogoutView, {'template_name': 'logout.html'}, name='logout'),
-    url('', views.home, name='home'),
-    path('CovidDataPortal/', include('CovidDataPortal.urls'), name='home'),
+    path('admin/', admin.site.urls),
+    path('users/', include('users.urls')), # 新增區塊
+    path('', include('CovidDataPortal.urls')),
     # path('', RedirectView.as_view(url='/CovidDataPortal/')),
     # path('accounts/', include('django.contrib.auth.urls')) #forloginauthentication
     # #path('', TemplateView.as_view(template_name='base.html')), # new

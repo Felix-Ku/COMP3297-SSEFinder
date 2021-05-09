@@ -39,6 +39,16 @@
   </nav>
 
       <div class="container">
+
+          <p>
+    --省略--
+      {% if user.is_authenticated %}
+        Hello, {{ user.username }}.
+      {% else %}
+        <a href="{% url 'users:login' %}">log in</a>
+      {% endif %}
+    </p>
+
       {% block content %}{% endblock %}
       </div>
 
