@@ -23,9 +23,9 @@ class case_records(models.Model):
     def __str__(self): # Add string functions to models
         return str(self.case_number)
 
-    class Account(models.Model):
+class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    staffnum = models.IntegerField(max_length=6, null=True)
+    staffnum = models.IntegerField(null=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email_address = models.EmailField(max_length=254)
