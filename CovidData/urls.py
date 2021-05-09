@@ -25,9 +25,9 @@ from CovidDataPortal import views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^login/', auth_view.LoginView, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/', auth_view.LogoutView, {'template_name': 'logout.html'}, name='logout'),
-    url(r'^', views.home, name='home'),
+    url('login/', auth_view.LoginView, {'template_name': 'login.html'}, name='login'),
+    url('logout/', auth_view.LogoutView, {'template_name': 'logout.html'}, name='logout'),
+    url('', views.home, name='home'),
     path('CovidDataPortal/', include('CovidDataPortal.urls'), name='home'),
     # path('', RedirectView.as_view(url='/CovidDataPortal/')),
     # path('accounts/', include('django.contrib.auth.urls')) #forloginauthentication
