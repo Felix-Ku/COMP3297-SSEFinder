@@ -9,6 +9,7 @@ from django.shortcuts import render
 # Import models
 from .models import case_records
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 import json
 import requests
@@ -17,6 +18,10 @@ import pandas as pd
 import datetime
 
 ####################### New views.
+@login_required
+def home(request):
+    return render(request, 'home.html', {'username': request.user.username})
+
 def Create_record(request):
 
     cases = case_records.objects.all()

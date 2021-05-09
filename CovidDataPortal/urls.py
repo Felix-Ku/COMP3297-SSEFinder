@@ -3,7 +3,7 @@ from django.urls import path
 from CovidDataPortal import views
 
 urlpatterns = [
-    path('home/', views.index, name='index'),
+    # path('home/', views.index, name='index'),
     #### Old urls
     # path('LocationAdd/', views.AddLocation, name='AddLocation'),
     # path('LocationData_list/', views.LocationData_list_view, name='LocationData_list'),
@@ -14,5 +14,5 @@ urlpatterns = [
     path('Case_records/Case_query/', views.Case_query, name='Case_query'),
     path('Case_records/Create_attendance/', views.Create_attendance, name='Create_attendance'),
     path('SSE_Finder/', views.SSE_Finder, name='SSE_Finder'),
-    path('', views.login, name='login'),
+    # path('', views.login, name='login'),
 ]
