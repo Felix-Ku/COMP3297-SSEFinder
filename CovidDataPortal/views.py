@@ -70,13 +70,21 @@ def Create_record(request):
 
 def Case_query(request):
 
+
     if 'q' in request.GET:
         q = request.GET['q']
         cases = case_records.objects.all().filter(case_number=q)
+        message = "Case number searched: "+q
+        if (cases!= None):
+            status = "Case found!"
+        else:
+            status = "Case not found!"
     else:
         cases = case_records.objects.all()
+        message = "Showing all cases"
+        status = "Awaiting search action..."
 
-    return render(request, 'Case_query.html', {'cases': cases})
+    return render(request, 'Case_query.html', {'cases': cases, 'message': message, 'status':status})
 
     # target_case = ""
     # found = ""
