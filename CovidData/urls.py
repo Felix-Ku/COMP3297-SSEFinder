@@ -26,6 +26,7 @@ from CovidDataPortal import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('CovidDataPortal/', include('CovidDataPortal.urls')), # 新增區塊
+    path('', include('CovidDataPortal.urls')),
     # path('', RedirectView.as_view(url='/CovidDataPortal/')),
     # path('accounts/', include('django.contrib.auth.urls')) #forloginauthentication
     # #path('', TemplateView.as_view(template_name='base.html')), # new
