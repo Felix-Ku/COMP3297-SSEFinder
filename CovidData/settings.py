@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CovidDataPortal.apps.CoviddataportalConfig',
-    #'user',
+    'user',
 ]
 
 MIDDLEWARE = [
