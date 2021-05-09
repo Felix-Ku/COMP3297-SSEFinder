@@ -45,7 +45,7 @@
       {% if user.is_authenticated %}
         Hello, {{ user.username }}.
       {% else %}
-        <a href="{% url 'CovidDataPortal:login' %}">log in</a>
+        <a href="{% url 'login' %}">log in</a>
       {% endif %}
     </p>
 

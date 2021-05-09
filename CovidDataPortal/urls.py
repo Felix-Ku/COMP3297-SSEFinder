@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView
 app_name = 'CovidDataPortal'
 
 urlpatterns = [
-    path('CovidDataPortal/', views.index, name='CovidDataPortal'),
+    path('CovidDataPortal/', views.index, name='index'),
     #### Old urls
     # path('LocationAdd/', views.AddLocation, name='AddLocation'),
     # path('LocationData_list/', views.LocationData_list_view, name='LocationData_list'),

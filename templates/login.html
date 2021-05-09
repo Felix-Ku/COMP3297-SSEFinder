@@ -6,13 +6,13 @@
     <p>Your username and password didn't match. Please try again.</p>
   {% endif %}
     
-  <form method="post" action="{% url 'CovidDataPortal:login' %}">
+  <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form.as_p }}
     
     <button name="submit">log in</button> 
     <input type="hidden" name="next"
-      value="{% url 'CovidDataPortal:index' %}" />
+      value="{% url 'index' %}" />
   </form>
     
 {% endblock content %}
