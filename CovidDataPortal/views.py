@@ -72,7 +72,7 @@ def Case_query(request):
 
     if 'q' in request.GET:
         q = request.GET['q']
-        cases = case_records.objects.filter(case_number__icontains=q)
+        cases = case_records.objects.all().filter(case_number=q)
     else:
         cases = case_records.objects.all()
 
