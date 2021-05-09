@@ -71,14 +71,14 @@ def Create_record(request):
 def Case_query(request):
 
 
-    if 'q' in request.GET:
+    if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         cases = case_records.objects.all().filter(case_number=q)
         message = "Case number searched: "+q
-        if (cases!= None):
-            status = "Case found!"
-        else:
+        if len(cases) == 0:
             status = "Case not found!"
+        else:
+            status = "Case found!"
     else:
         cases = case_records.objects.all()
         message = "Showing all cases"

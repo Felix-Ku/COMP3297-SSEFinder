@@ -9,7 +9,7 @@
       System status: <strong><em><span style="color:red;">{{ status }}</span></em></strong>
     </p>
 
-        <form>
+        <form>{% csrf_token %}
                         <div class="input-group">
                             <input name="q" type="text" placeholder="Search" class="form-control form-control-lg" />
                             <div class="input-group-append">
