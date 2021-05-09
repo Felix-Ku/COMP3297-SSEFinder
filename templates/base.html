@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-{% if user.is_authenticated %} 
 <head>
   {% block title %}<title>Local Library</title>{% endblock %}
   <meta charset="utf-8">
@@ -48,16 +47,4 @@
     COMP3297 2020-2021 Sem 2 Group Project by Group F
     </div>
 </body>
-  
-{% else %}
-  
-<head>
-</head>
-<body>
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-</body>
-  
-{% endif %}
-  
 </html>
