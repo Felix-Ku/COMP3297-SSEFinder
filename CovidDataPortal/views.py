@@ -10,6 +10,7 @@ from django.shortcuts import render
 from .models import case_records
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout # 匯入logout函式
 
 import json
 import requests
@@ -21,6 +22,10 @@ import datetime
 # @login_required
 # def home(request):
 #     return render(request, 'home.html', {'username': request.user.username})
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login.html'))
 
 def Create_record(request):
 

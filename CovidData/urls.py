@@ -20,15 +20,13 @@ from django.urls import path
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-import django.contrib.auth.views as auth_view
-from CovidDataPortal import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('CovidDataPortal/', include('CovidDataPortal.urls')), # 新增區塊
+    url('admin/', admin.site.urls),
+    path('CovidDataPortal/', include('CovidDataPortal.urls'), name='home'),
     path('', RedirectView.as_view(url='/CovidDataPortal/')),
     # path('accounts/', include('django.contrib.auth.urls')) #forloginauthentication
-    # #path('', TemplateView.as_view(template_name='base.html')), # new
+    #path('', TemplateView.as_view(template_name='base.html')), # new
 
 ]
 

@@ -41,20 +41,24 @@
       <div class="container">
 
           <p>
-    --省略--
+
       {% if user.is_authenticated %}
         Hello, {{ user.username }}.
+          <a href="{% url 'logout' %}">log out</a>
+
       {% else %}
         <a href="{% url 'login' %}">log in</a>
+
+
+
+
       {% endif %}
+          {% block content %}{% endblock %}
     </p>
 
-      {% block content %}{% endblock %}
       </div>
 
 
-    <div style="position: absolute; bottom: 5px; left: 5px;">
-    COMP3297 2020-2021 Sem 2 Group Project by Group F
-    </div>
+
 </body>
 </html>
