@@ -15,4 +15,17 @@ class CaseInputForm(forms.ModelForm):
             'confirmation_date': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+class InputForm(forms.ModelForm):
+    class Meta:
+        model = attendances
+        fields = '__all__'
+        widgets = {
+            'venue_name': forms.NumberInput(attrs={'class': 'form-control'}),
+            'venue_location': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'hk_grid': forms.TextInput(attrs={'class': 'form-control'}),
+            'event_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
 

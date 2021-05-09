@@ -1,17 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-class attendances(models.Model):
-    venue_name = models.CharField(max_length=100)
-    venue_location = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
-    hk_grid = models.CharField(max_length=50)
-    event_date = models.DateField()
-    description = models.CharField(max_length=200)
-
-    def __str__(self): # Add string functions to models
-        return str(self.id)
-
 class case_records(models.Model):
     case_number = models.IntegerField()
     person_name = models.CharField(max_length=255)
@@ -22,6 +11,19 @@ class case_records(models.Model):
 
     def __str__(self): # Add string functions to models
         return str(self.case_number)
+
+class attendances(models.Model):
+
+    venue_name = models.CharField(max_length=255)
+    venue_location = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    hk_grid = models.CharField(max_length=255)
+    event_date = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    case_number_link = models.CharField(max_length=255, default="")
+
+    def __str__(self): # Add string functions to models
+        return str(self.id)
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
