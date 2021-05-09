@@ -43,8 +43,9 @@
           <p>
 
       {% if user.is_authenticated %}
-        Hello, {{ user.username }}.
-          <a href="{% url 'logout' %}">log out</a>
+        Hello, {{ user.username }}. You have logged-in.
+          <a href="{% url 'logout' %}"> LOG OUT</a>
+          <hr>
 
       {% else %}
         <a href="{% url 'login' %}">log in</a>
