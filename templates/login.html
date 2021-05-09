@@ -1,7 +1,12 @@
   {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
   {% endif %}
-
+  <head>
+    {% block title %}<title>Login to SSE Finder</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
 
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
