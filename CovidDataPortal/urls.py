@@ -4,7 +4,7 @@ from CovidDataPortal import views
 from django.contrib.auth.views import LoginView
 
 urlpatterns = [
-    # path('home/', views.index, name='index'),
+    path('home/', views.index, name='index'),
     #### Old urls
     # path('LocationAdd/', views.AddLocation, name='AddLocation'),
     # path('LocationData_list/', views.LocationData_list_view, name='LocationData_list'),
