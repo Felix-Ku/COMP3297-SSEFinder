@@ -15,7 +15,7 @@ class CaseInputForm(forms.ModelForm):
             'confirmation_date': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-class InputForm(forms.ModelForm):
+class AttInputForm(forms.ModelForm):
     class Meta:
         model = attendances
         fields = '__all__'
@@ -26,6 +26,7 @@ class InputForm(forms.ModelForm):
             'hk_grid': forms.TextInput(attrs={'class': 'form-control'}),
             'event_date': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.TextInput(attrs={'class': 'form-control'}),
+            'case_number_link': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 

@@ -171,6 +171,11 @@ def index(request):
     }
     return render(request, 'index.html', context=context)
 
+def login(request):
+    context = {
+    }
+    return render(request, 'login.html', context=context)
+
     # ## Select form location
     # locations = Location_data.objects.filter()
     # form = request.POST
