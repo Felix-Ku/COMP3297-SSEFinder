@@ -307,10 +307,14 @@ def SSE_Finder(request):
                 list_event_date.append(str(event.event_date))
                 list_description.append(str(event.description))
 
-    df2["address"] = list_address
-    df2["hk_grid"] = list_hk_grid
-    df2["event_date"] = list_event_date
-    df2["description"] = list_description
+    # df2["address"] = list_address
+    # df2["hk_grid"] = list_hk_grid
+    # df2["event_date"] = list_event_date
+    # df2["description"] = list_description
+    print(list_address)
+    print(list_hk_grid)
+    print(list_event_date)
+    print(list_description)
 
     print(df2)
 
