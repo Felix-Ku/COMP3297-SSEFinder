@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 
 from .forms import CaseInputForm
 from .forms import AttInputForm
+from .forms import InputForm
 from django.shortcuts import render
 
 # Import models
@@ -40,7 +41,9 @@ def Create_record(request):
         form = CaseInputForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect(All_cases_success)
+            return redirect(All_cases_success)
+        else:
+            return redirect(Fail_create_cases)
     context = {
         'cases': cases,
         'form': form
@@ -48,6 +51,12 @@ def Create_record(request):
     }
 
     return render(request, 'Create_record.html', context)
+
+def Fail_create_cases(request):
+
+    context = {
+    }
+    return render(request, 'Fail_create_cases.html', context)
 
     # context = {
     # }
@@ -264,9 +273,19 @@ def All_cases_success(request):
     return render(request, 'All_cases_success.html', context=context)
 
 def SSE_Finder(request):
-    context = {
-    }
-    return render(request, 'SSE_Finder.html', context=context)
+
+    if request.method == "POST":
+        form = InputForm(request.POST)
+        if form.is_valid():
+            from_date = request.POST.get('from_date', '')
+            to_date = request.POST.get('to_date', '')
+
+    else:
+        form = InputForm()
+
+    return render(request, 'SSE_Finder.html', {
+        'form': form,
+    })
 
 
 def index(request):

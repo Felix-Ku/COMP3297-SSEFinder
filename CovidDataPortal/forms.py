@@ -29,4 +29,8 @@ class AttInputForm(forms.ModelForm):
             'case_number_link': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
+class InputForm(forms.Form):
+    from_date = forms.CharField()
+    to_date = forms.IntegerField()
+
 

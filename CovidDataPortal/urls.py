@@ -10,6 +10,7 @@ urlpatterns = [
     # path('LocationData_list/', views.LocationData_list_view, name='LocationData_list'),
     #### New urls
     path('Case_records/Create_record/', views.Create_record, name='Create_record'),
+    path('Case_records/Create_record/Fail_create_cases/', views.Fail_create_cases, name='Fail_create_cases'),
     path('Case_records/All_cases/', views.All_cases, name='All_cases'),
     path('Case_records/All_cases_success/', views.All_cases_success, name='All_cases_success'),
     path('Case_records/All_cases_success/Attendance_query/', views.Attendance_query, name='Attendance_query_success'),
