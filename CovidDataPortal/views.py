@@ -198,8 +198,8 @@ def Create_attendance(request):
                     y = df.iloc[0]["y"]
                     grid = str(x)+","+str(y)
                     add = df.iloc[0]["addressEN"]
-            form.data['hk_grid'] = grid
-            form.data['address'] = add
+            # form.data['hk_grid'] = grid
+            # form.data['address'] = add
             form.save()
         return redirect(All_cases_success)
     context = {
