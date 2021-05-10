@@ -9,6 +9,7 @@ from django.shortcuts import render
 
 # Import models
 from .models import case_records
+from .models import attendances
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout # 匯入logout函式
@@ -96,6 +97,23 @@ def Case_query(request):
         status = "Awaiting search action..."
 
     return render(request, 'Case_query.html', {'cases': cases, 'message': message, 'status':status})
+
+def Attendance_query(request):
+
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        attendance = attendances.objects.all().filter(case_number_link=q)
+        message = "Case number selected: " + q
+        if len(attendance) == 0:
+            status = "Attendance records not found!"
+        else:
+            status = "Attendance records found!"
+    else:
+        attendance = attendances.objects.all()
+        message = "Showing all attendance records"
+        status = "Awaiting search action..."
+
+    return render(request, 'Attendance_query.html', {'attendance': attendance, 'message': message, 'status': status})
 
     # target_case = ""
     # found = ""

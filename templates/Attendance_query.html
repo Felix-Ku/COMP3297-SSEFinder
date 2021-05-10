@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+  </br>
+  <h1>Attendance query</h1>
+  </br>
+
+    <p>
+      System status: <strong><em><span style="color:red;">{{ status }}</span></em></strong>
+    </p>
+</br>
+     <p>
+      <strong><em><span style="color:red;">Input case number to search for its attendance records:</span></em></strong>
+    </p>
+        <form>{% csrf_token %}
+                        <div class="input-group">
+                            <input name="q" type="text" placeholder="Search" class="form-control form-control-lg" />
+                            <div class="input-group-append">
+                                <button class="btn btn-dark btn-lg">Search</button>
+                            </div>
+                        </div>
+                    </form>
+    </br>
+<p>
+      <strong><em><span style="color:red;">{{ message }}</span></em></strong>
+  </p>
+        <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Case Number</th>
+                <th>Venue name</th>
+                <th>venue location</th>
+                <th>Address</th>
+                <th>HK grid</th>
+                <th>Event date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                        {% for attend in attendance %}
+
+                <tr>
+                    <td>{{ attend.case_number_link }}</td>
+                    <td>{{ attend.venue_name }}</td>
+                    <td>{{ attend.venue_location }}</td>
+                    <td>{{ attend.address }}</td>
+                    <td>{{ attend.hk_grid }}</td>
+                    <td>{{ attend.event_date }}</td>
+                    <td>{{ attend.description }}</td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
