@@ -308,15 +308,16 @@ def SSE_Finder(request):
                 list_description.append(str(event.description))
                 break
 
-    # df2["address"] = list_address
-    # df2["hk_grid"] = list_hk_grid
-    # df2["event_date"] = list_event_date
-    # df2["description"] = list_description
-    print(list_address)
-    print(list_hk_grid)
-    print(list_event_date)
-    print(list_description)
+    df2["address"] = list_address
+    df2["hk_grid"] = list_hk_grid
+    df2["event_date"] = list_event_date
+    df2["description"] = list_description
+    # print(list_address)
+    # print(list_hk_grid)
+    # print(list_event_date)
+    # print(list_description)
 
+    # df2['event_date'] = pd.to_datetime(df['event_date'], format='%d-%m-%Y')
     print(df2)
 
     # list_count = df2['count'].values.tolist()
@@ -330,8 +331,6 @@ def SSE_Finder(request):
     data = []
     data = json.loads(json_records)
     context = {'d': data}
-
-
 
 
     # if request.method == "POST":
