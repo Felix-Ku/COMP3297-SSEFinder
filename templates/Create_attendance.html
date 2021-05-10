@@ -5,12 +5,13 @@
   <h1>Create attendance</h1>
   </br>
     <p>
-      <strong>Please supply a case number for the attendance record:</strong>
+      <strong>1. Please supply a case number for the attendance record:</strong>
     </p>
         <form>{% csrf_token %}
                         <div class="input-group">
                             <input name="q" type="text" placeholder="Search" class="form-control form-control-lg" />
                             <div class="input-group-append">
+                            </br>
                                 <button class="btn btn-dark btn-lg">Search</button>
                             </div>
                         </div>
@@ -23,9 +24,10 @@
     <p>
       Selected case: <strong><em><span style="color:red;">{{ Selected }}</span></em></strong>
     </p>
+    <hr>
     </br>
     <p>
-      <strong>Input details to create new attendance record:</strong>
+      <strong>2. Input details to create new attendance record:</strong>
     </p>
         <form action="" method="POST">
     {% csrf_token %}
