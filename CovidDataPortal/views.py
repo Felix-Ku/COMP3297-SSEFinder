@@ -191,13 +191,13 @@ def Create_attendance(request):
                     df = pd.DataFrame(data)
                     if cases != "":
                         date_symptom = datetime.datetime.strptime(str(cases.symptoms_date), '%d-%m-%Y')
-                        date_confirm = datetime.datetime.strptime(str(cases.confirmation_date), '%d-%m-%Y')
-                        date_event = datetime.datetime.strptime(str(event_date), '%d-%m-%Y')
-                        days14 = date_symptom - timedelta(days=14)
-                        if not (days14 <= date_event <= date_confirm):
-                            return redirect(Fail_date)
-                    else:
-                        return redirect(Fail_create)
+                    #     date_confirm = datetime.datetime.strptime(str(cases.confirmation_date), '%d-%m-%Y')
+                    #     date_event = datetime.datetime.strptime(str(event_date), '%d-%m-%Y')
+                    #     days14 = date_symptom - timedelta(days=14)
+                    #     if not (days14 <= date_event <= date_confirm):
+                    #         return redirect(Fail_date)
+                    # else:
+                    #     return redirect(Fail_create)
                 except:
                     data_status = "Unsuccessful"
                     return redirect(Fail_create)
