@@ -103,14 +103,14 @@ def Attendance_query(request):
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         attendance = attendances.objects.all().filter(case_number_link=q)
-        message = "Showing records of case: " + q
+        message = str(q)
         if len(attendance) == 0:
             status = "Attendance records not found!"
         else:
             status = "Attendance records found!"
     else:
         attendance = attendances.objects.all()
-        message = "Showing all attendance records"
+        message = "ALL"
         status = "Awaiting search action..."
 
     return render(request, 'Attendance_query.html', {'attendance': attendance, 'message': message, 'status': status})
@@ -178,6 +178,7 @@ def Create_attendance(request):
     if request.method == "POST":
         form = AttInputForm(request.POST)
         if form.is_valid():
+            instance = form.save(commit=False)
             venue_name = form.data.get('venue_name', None)
             if venue_name is not None:
                 link = "https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q="
@@ -197,11 +198,12 @@ def Create_attendance(request):
                     x = df.iloc[0]["x"]
                     y = df.iloc[0]["y"]
                     grid = str(x)+","+str(y)
-                    add = df.iloc[0]["addressEN"]
-            form.cleaned_data['hk_grid'] = grid
-            form.cleaned_data['address'] = add
-            form.save()
+                    add = str(df.iloc[0]["addressEN"])
+            instance.hk_grid = grid
+            instance.address = add
+            instance.save()
         return redirect(All_cases_success)
+
     context = {
         'cases': cases,
         'form': form,
