@@ -178,26 +178,26 @@ def Create_attendance(request):
     if request.method == "POST":
         form = AttInputForm(request.POST)
         if form.is_valid():
-            venue_name = form.cleaned_data.get('venue_name', None)
-            if venue_name is not None:
-                link = "https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q="
-                link += urllib.parse.quote(str(venue_name))
-                try:
-                    resp = requests.get(url=link)
-                    data = resp.json()
-                    df = pd.DataFrame(data)
-                except:
-                    data_status = "Unsuccessful"
-                if df.empty:
-                    data_status = "Unsuccessful"
-                    add = "Unsuccessful retrieval"
-                    grid = "Unsuccessful retrieval"
-                else:
-                    data_status = "Successful"
-                    x = df.iloc[0]["x"]
-                    y = df.iloc[0]["y"]
-                    grid = x+","+y
-                    add = df.iloc[0]["addressEN"]
+            venue_name = form.data.get('venue_name', None)
+            # if venue_name is not None:
+            #     link = "https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q="
+            #     link += urllib.parse.quote(str(venue_name))
+            #     try:
+            #         resp = requests.get(url=link)
+            #         data = resp.json()
+            #         df = pd.DataFrame(data)
+            #     except:
+            #         data_status = "Unsuccessful"
+            #     if df.empty:
+            #         data_status = "Unsuccessful"
+            #         add = "Unsuccessful retrieval"
+            #         grid = "Unsuccessful retrieval"
+            #     else:
+            #         data_status = "Successful"
+            #         x = df.iloc[0]["x"]
+            #         y = df.iloc[0]["y"]
+            #         grid = x+","+y
+            #         add = df.iloc[0]["addressEN"]
             # form.cleaned_data['hk_grid'] = grid
             # form.cleaned_data['address'] = add
             form.save()
