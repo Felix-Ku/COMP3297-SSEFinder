@@ -103,7 +103,7 @@ def Attendance_query(request):
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         attendance = attendances.objects.all().filter(case_number_link=q)
-        message = "Case number selected: " + q
+        message = "Showing records of case: " + q
         if len(attendance) == 0:
             status = "Attendance records not found!"
         else:
