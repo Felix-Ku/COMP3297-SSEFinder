@@ -9,32 +9,67 @@
 
 
 
-{#    <p>Please supply a date range for searching:</p>#}
-{#    <form action = "{% url 'SSE_Finder' %}" method="post"> {% csrf_token %}#}
-{#  <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>#}
-{#  <tr>#}
-{#    <td>From date: </br> <em>(e.g. 06-02-1978 (Day-Month-Year))</em></td>#}
-{#    <td><label for="from_date"></label><input type="text" name ="from_date" value ="" /></td>#}
-{#  </tr>#}
-{#  </br>#}
-{#  <tr>#}
-{#      <td>To date: </br> <em>(e.g. 06-02-1978 (Day-Month-Year))</em></td>#}
-{#    <td><p><label for="to_date"></label><input type="text" name ="to_date" value ="" /></p></td>#}
-{#  </tr>#}
-{#</table>#}
-{#      </br>#}
-{#  <input type="submit" value="Submit"/>#}
-{#  </form>#}
-{##}
-{#    <hr>#}
-{#  <p>#}
-{#      Date range selected: <strong><em><span style="color:red;">{{ Selected }}</span></em></strong>#}
-{#    </p>#}
-{#    <p>#}
-{#      Search result: <strong><em><span style="color:red;">{{ status }}</span></em></strong>#}
-{#    </p>#}
-{#    <hr>#}
+    <p>Please supply a date range for searching:</p>
+    <form action = "{% url 'SSE_Finder' %}" method="post"> {% csrf_token %}
+  <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+  <tr>
+    <td>From date: </br> <em>(e.g. 06-02-1978 (Day-Month-Year))</em></td>
+    <td><label for="from_date"></label><input type="text" name ="from_date" value ="" /></td>
+  </tr>
+  </br>
+  <tr>
+      <td>To date: </br> <em>(e.g. 06-02-1978 (Day-Month-Year))</em></td>
+    <td><p><label for="to_date"></label><input type="text" name ="to_date" value ="" /></p></td>
+  </tr>
+</table>
+      </br>
+  <input type="submit" value="Submit"/>
+  </form>
 
+<hr>
+    <h2>Potential SSEs search:</h2>
+    <hr>
+  <p>
+      Date range selected: <strong><em><span style="color:red;">{{ Selected }}</span></em></strong>
+    </p>
+    <p>
+      Search result: <strong><em><span style="color:red;">{{ status }}</span></em></strong>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Venue name</th>
+                    <th>Venue location</th>
+                    <th>Address</th>
+                    <th>HK Grid coordinates</th>
+                    <th>Event date</th>
+                    <th>Description</th>
+                        <th>Number of cases involved</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if s %}
+            {% for j in s %}
+                <tr>
+                    <td>{{ j.venue_name }}</td>
+                        <td>{{ j.venue_location }}</td>
+                        <td>{{ j.address }}</td>
+                        <td>{{ j.hk_grid }}</td>
+                        <td>{{ j.event_date }}</td>
+                        <td>{{ j.description }}</td>
+                        <td>{{ j.count }}</td>
+{#                         <td>{{ i.case_number }}</td>#}
+{#                <td><a href="SSE_query/?q={{ case.case_number }}">VIEW DETAILS</a></td>#}
+                </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+
+    <hr>
+    <h2>All potential SSEs:</h2>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">

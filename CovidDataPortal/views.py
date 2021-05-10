@@ -316,7 +316,7 @@ def SSE_Finder(request):
     # print(list_event_date)
     # print(list_description)
 
-    # df2['event_date'] = pd.to_datetime(df['event_date'], format='%d-%m-%Y')
+
     print(df2)
 
     # list_count = df2['count'].values.tolist()
@@ -326,22 +326,31 @@ def SSE_Finder(request):
     # list_hk_grid = df2['hk_grid'].values.tolist()
     # list_event_date = df2['event_date'].values.tolist()
     # list_description = df2['description'].values.tolist()
+
     json_records = df2.reset_index().to_json(orient='records')
     data = []
     data = json.loads(json_records)
-    context = {'d': data}
+
+    if request.method == "POST":
+        form = InputForm(request.POST)
+        if form.is_valid():
+            from_date = request.POST.get('from_date', '')
+            to_date = request.POST.get('to_date', '')
+            from_date_t = datetime.datetime.strptime(from_date, '%d-%m-%Y')
+            to_date_t = datetime.datetime.strptime(to_date, '%d-%m-%Y')
+            date = str(from_date)+","+str(to_date)
+            df2['event_date'] = pd.to_datetime(df['event_date'], format='%d-%m-%Y')
+            df3 = df2[df2['event_date'] < from_date_t]
+            df4 = df3[to_date_t < df3['event_date']]
+            json_records = df4.reset_index().to_json(orient='records')
+            dataS = []
+            dataS = json.loads(json_records)
+            context = {'Selected':date, 'status': "Successful", 'd': data, 'form': form, 's': dataS}
 
 
-    # if request.method == "POST":
-    #     form = InputForm(request.POST)
-    #     if form.is_valid():
-    #         from_date = request.POST.get('from_date', '')
-    #         to_date = request.POST.get('to_date', '')
-    #
-    # else:
-    #     form = InputForm()
-    #
-
+    else:
+        form = InputForm()
+        context = {'Selected': "", 'status': "Unsuccessful", 'd': data, 'form': form, 's':''}
 
     return render(request, 'SSE_Finder.html', context)
     # return render(request, 'SSE_Finder.html', {
