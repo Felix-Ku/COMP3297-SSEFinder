@@ -171,7 +171,7 @@ def Create_attendance(request):
         cases = ""
 
     if cases!="":
-        form = AttInputForm(initial={'address': cases.symptoms_date,'hk_grid': "LEAVE BLANK for AUTO-INPUT",'case_number_link': cases.first()})
+        form = AttInputForm(initial={'address': "LEAVE BLANK for AUTO-INPUT",'hk_grid': "LEAVE BLANK for AUTO-INPUT",'case_number_link': cases.first()})
     else:
         form = AttInputForm(initial={'address': "LEAVE BLANK for AUTO-INPUT", 'hk_grid': "LEAVE BLANK for AUTO-INPUT",
                                      'case_number_link':'CASE NOT SELECTED!'})
@@ -190,14 +190,14 @@ def Create_attendance(request):
                     data = resp.json()
                     df = pd.DataFrame(data)
                     if cases != "":
-                        date_symptom = datetime.datetime.strptime(str(cases.symptoms_date), '%d-%m-%Y')
-                    #     date_confirm = datetime.datetime.strptime(str(cases.confirmation_date), '%d-%m-%Y')
-                    #     date_event = datetime.datetime.strptime(str(event_date), '%d-%m-%Y')
-                    #     days14 = date_symptom - timedelta(days=14)
-                    #     if not (days14 <= date_event <= date_confirm):
-                    #         return redirect(Fail_date)
-                    # else:
-                    #     return redirect(Fail_date)
+                        date_symptom = datetime.datetime.strptime(str(cases[0].symptoms_date), '%d-%m-%Y')
+                        date_confirm = datetime.datetime.strptime(str(cases[0].confirmation_date), '%d-%m-%Y')
+                        date_event = datetime.datetime.strptime(str(event_date), '%d-%m-%Y')
+                        days14 = date_symptom - timedelta(days=14)
+                        if not (days14 <= date_event <= date_confirm):
+                            return redirect(Fail_date)
+                    else:
+                        return redirect(Fail_create)
                 except:
                     data_status = "Unsuccessful"
                     return redirect(Fail_create)
