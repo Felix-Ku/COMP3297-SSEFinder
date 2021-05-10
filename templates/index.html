@@ -7,22 +7,21 @@
   <h2>How to use:</h2>
   <ol>
     <li>Create record<ol>
-        <li><a href="">EXPLAINATION</a></li>
+        <li><a href="{% url 'Create_record' %}">Click here to create a case record</a></li>
+        <li>Please do not enter duplicated case number/ID Number, otherwise an error message will pop out.</li>
       </ol></li>
     <li>Case query<ol>
-        <li><a href="">EXPLAINATION</a></li>
+        <li><a href="{% url 'Case query'%}">Click here to input a case number and see related case records.</a></li>
       </ol></li>
       <li>Create attendance<ol>
-        <li><a href="">EXPLAINATION</a></li>
+        <li><a href="{% url 'Create_attendance' %}">Click here to create attendnace for a case.</a></li>
+        <li>First, type an existing case number and press search. If the case is found, then enter the attendance details.</li>
       </ol></li>
       <li>All cases<ol>
-        <li><a href="">EXPLAINATION</a></li>
+        <li><a href="{% url 'All_cases' %}">Click here to view all case records and attendace record of each case.</a></li>
       </ol></li>
       <li>SSE Finder<ol>
-        <li><a href="">EXPLAINATION</a></li>
-      </ol></li>
-    <li>SSE Finder<ol>
-        <li><a href="">EXPLAINATION</a></li>
+        <li><a href="{% url 'SSE_Finder' %}">Click here to use the SSE Finder.</a></li>
       </ol></li>
   </ol>
 
