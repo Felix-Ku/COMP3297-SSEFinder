@@ -20,6 +20,7 @@ urlpatterns = [
     path('Case_records/Create_attendance/Fail_date/', views.Fail_date, name='Fail_date'),
     path('Case_records/Create_attendance/Fail_create/', views.Fail_create, name='Fail_create'),
     path('SSE_Finder/', views.SSE_Finder, name='SSE_Finder'),
+    path('SSE_Finder/SSE_query/', views.SSE_query, name='SSE_query'),
     path('logout/', views.logout_view, name='logout'),
     path('', LoginView.as_view(template_name='login.html'), name="login"),
 

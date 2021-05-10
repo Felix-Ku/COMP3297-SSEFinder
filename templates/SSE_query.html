@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+  </br>
+  <h1>SSE query</h1>
+  </br>
+
+      <p>
+       Details for SSE case No.<strong><em><span style="color:red;">{{ case }}</span></em></strong>
+    </p>
+    <p>
+      Date range selected: <strong><em><span style="color:red;">{{ Selected }}</span></em></strong>
+    </p>
+
+    <h2>Details: </h2>
+
+
+    </br>
+
+{#        <table class="table table-bordered table-striped">#}
+{#        <thead class="thead-dark">#}
+{#            <tr>#}
+{#                <th>Case Involved</th>#}
+{#                <th>Classification of case</th>#}
+{#                <th>Event details</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#                        {% for SSE in SSEs %}#}
+{##}
+{#                <tr>#}
+{#                    <td>{{ SSE.case_number }}</td>#}
+{#                    <td>{{ SSE.person_name }}</td>#}
+{#                    <td>{{ SSE.id_number }}</td>#}
+{#                </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+    <hr>
+    <h2>Search for other cases:</h2>
+
+           <form>{% csrf_token %}
+                        <div class="input-group">
+                            <input name="q" type="text" placeholder="Search" class="form-control form-control-lg" />
+                            <div class="input-group-append">
+                                <button class="btn btn-dark btn-lg">Search</button>
+                            </div>
+                        </div>
+                    </form>
+
+{% endblock %}

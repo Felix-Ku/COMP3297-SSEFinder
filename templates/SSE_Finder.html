@@ -19,9 +19,38 @@
   </tr>
 </table>
       </br>
-  <input type="search" value="search"/>
+  <input type="submit" value="Submit"/>
   </form>
 
     <hr>
+  <p>
+      Date range selected: <strong><em><span style="color:red;">{{ Selected }}</span></em></strong>
+    </p>
+    <p>
+      Search result: <strong><em><span style="color:red;">{{ status }}</span></em></strong>
+    </p>
+    <hr>
+
+
+
+{#    <table class="table table-bordered table-striped">#}
+{#        <thead class="thead-dark">#}
+{#            <tr>#}
+{#                <th>SSE no.</th>#}
+{#                <th>Details</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for SSE in SSEs %}#}
+{#                <tr>#}
+{#                    <td>{{ SSE.case_number }}</td>#}
+{#                <td><a href="SSE_query/?q={{ case.case_number }}">VIEW DETAILS</a></td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+
+
 
 {% endblock %}

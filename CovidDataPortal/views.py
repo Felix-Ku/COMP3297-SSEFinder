@@ -108,6 +108,8 @@ def Case_query(request):
 
     return render(request, 'Case_query.html', {'cases': cases, 'message': message, 'status':status})
 
+
+
 def Attendance_query(request):
 
     if 'q' in request.GET and request.GET['q']:
@@ -287,6 +289,25 @@ def SSE_Finder(request):
         'form': form,
     })
 
+def SSE_query(request):
+
+
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+
+        case = str(q)
+
+        # cases = case_records.objects.all().filter(case_number=q)
+        # if len(cases) == 0:
+        #     status = "Case not found!"
+        # else:
+        #     status = "Case found!"
+    # else:
+        # cases = case_records.objects.all()
+        # message = "Showing all cases"
+        # status = "Awaiting search action..."
+
+    return render(request, 'SSE_query.html', {'case': case, 'Selected': "Selected", })
 
 def index(request):
     context = {
