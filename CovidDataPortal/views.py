@@ -277,9 +277,9 @@ def All_cases_success(request):
 def SSE_Finder(request):
 
     cases_all = case_records.objects.all().values()
-    events_all = attendances.objects.all()
+    events_all = attendances.objects.all().values()
 
-    df = pd.DataFrame(cases_all)
+    df = pd.DataFrame(events_all)
 
     print (df)
 
