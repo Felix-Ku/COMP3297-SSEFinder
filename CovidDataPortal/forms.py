@@ -20,13 +20,13 @@ class AttInputForm(forms.ModelForm):
         model = attendances
         fields = '__all__'
         widgets = {
-            'venue_name': forms.NumberInput(attrs={'class': 'form-control'}),
+            'venue_name': forms.TextInput(attrs={'class': 'form-control'}),
             'venue_location': forms.TextInput(attrs={'class': 'form-control'}),
             'address': forms.TextInput(attrs={'class': 'form-control'}),
             'hk_grid': forms.TextInput(attrs={'class': 'form-control'}),
             'event_date': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'case_number_link': forms.TextInput(attrs={'class': 'form-control'}),
+            'case_number_link': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
 

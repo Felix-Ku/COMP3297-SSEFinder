@@ -133,8 +133,6 @@ def Create_attendance(request):
         q = request.GET['q']
         case = case_records.objects.all().filter(case_number=q)
 
-
-
         if len(case) == 0:
             status = "Case not found!"
             Selected = "None"
