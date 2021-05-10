@@ -291,7 +291,7 @@ def SSE_Finder(request):
 
 def SSE_query(request):
 
-
+    case = "ABC"
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
 
@@ -307,7 +307,7 @@ def SSE_query(request):
         # message = "Showing all cases"
         # status = "Awaiting search action..."
 
-    return render(request, 'SSE_query.html', {'case': case, 'Selected': "Selected", })
+    return render(request, 'SSE_query.html', {'case': case, 'Selected': "Selected" })
 
 def index(request):
     context = {
