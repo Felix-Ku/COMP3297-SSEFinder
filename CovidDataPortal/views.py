@@ -188,16 +188,16 @@ def Create_attendance(request):
                     df = pd.DataFrame(data)
                 except:
                     data_status = "Unsuccessful"
-                if df.empty:
-                    data_status = "Unsuccessful"
-                    add = "Unsuccessful retrieval"
-                    grid = "Unsuccessful retrieval"
-                else:
-                    data_status = "Successful"
-                    x = df.iloc[0]["x"]
-                    y = df.iloc[0]["y"]
-                    grid = x+","+y
-                    add = df.iloc[0]["addressEN"]
+                # if df.empty:
+                #     data_status = "Unsuccessful"
+                #     add = "Unsuccessful retrieval"
+                #     grid = "Unsuccessful retrieval"
+                # else:
+                #     data_status = "Successful"
+                #     x = df.iloc[0]["x"]
+                #     y = df.iloc[0]["y"]
+                #     grid = x+","+y
+                #     add = df.iloc[0]["addressEN"]
             # form.cleaned_data['hk_grid'] = grid
             # form.cleaned_data['address'] = add
             form.save()
