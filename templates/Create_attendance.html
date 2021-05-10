@@ -27,27 +27,16 @@
     <p>
       <strong>Input details to create new attendance record:</strong>
     </p>
-        <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Case Number</th>
-                <th>Person Name</th>
-                <th>Identity Document Number</th>
-                <th>Date of birth</th>
-                <th>Date of Onset</th>
-                <th>Date Case Confirmed</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <td>{{ case.case_number }}</td>
-                    <td>{{ case.person_name }}</td>
-                    <td>{{ case.id_number }}</td>
-                    <td>{{ case.birth_date }}</td>
-                    <td>{{ case.symptoms_date }}</td>
-                    <td>{{ case.confirmation_date }}</td>
-                </tr>
-        </tbody>
-    </table>
+        <form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="form-group col-md-6">
+
+            {{ form }}
+        <br>
+            <input class="btn btn-success" type="submit" value="Create" />
+        </div>
+    </div>
+</form>
 
 {% endblock %}

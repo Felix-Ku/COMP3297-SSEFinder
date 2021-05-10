@@ -133,11 +133,12 @@ def Create_attendance(request):
         q = request.GET['q']
         case = case_records.objects.all().filter(case_number=q)
 
-        cases=""
+
 
         if len(case) == 0:
             status = "Case not found!"
             Selected = "None"
+            cases = ""
         elif len(case) == 1:
             status = "Case found!"
             Selected = str(q)
@@ -145,10 +146,12 @@ def Create_attendance(request):
         elif len(case) >1:
             status = "Cases with duplicate number found, please check your database."
             Selected = "None"
+            cases = ""
 
     else: # If no search action
         Selected = "None"
         status = "Awaiting search action, please input a search."
+        cases = ""
 
     if cases!="":
         form = AttInputForm(initial={'address': "LEAVE BLANK for AUTO-INPUT",'hk_grid': "LEAVE BLANK for AUTO-INPUT",'case_number_link': cases.first()})
