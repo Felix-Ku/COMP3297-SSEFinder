@@ -31,6 +31,6 @@ class AttInputForm(forms.ModelForm):
 
 class InputForm(forms.Form):
     from_date = forms.CharField()
-    to_date = forms.IntegerField()
+    to_date = forms.CharField()
 
 
