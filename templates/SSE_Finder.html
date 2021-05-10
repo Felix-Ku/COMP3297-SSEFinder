@@ -37,35 +37,37 @@
 
 
 
-{#    <table class="table table-bordered table-striped">#}
-{#        <thead class="thead-dark">#}
-{#            <tr>#}
-{#                <th>SSE no.</th>#}
-{#                <th>Venue name</th>#}
-    {#                <th>Venue location</th>#}
-    {#                <th>Address</th>#}
-    {#                <th>HK Grid coordinates</th>#}
-    {#                <th>Event date</th>#}
-    {#                <th>Description</th>#}
-        {#                <th>Number of cases involved</th>#}
-{#            </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#            {% for SSE in SSEs %}#}
-{#                <tr>#}
-{#                    <td>{{ SSE.case_number }}</td>#}
-    {#                    <td>{{ SSE.case_number }}</td>#}
-    {#                    <td>{{ SSE.case_number }}</td>#}
-    {#                    <td>{{ SSE.case_number }}</td>#}
-    {#                    <td>{{ SSE.case_number }}</td>#}
-    {#                    <td>{{ SSE.case_number }}</td>#}
-    {#                    <td>{{ SSE.case_number }}</td>#}
-     {#                    <td>{{ SSE.case_number }}</td>#}
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>SSE no.</th>
+                <th>Venue name</th>
+                    <th>Venue location</th>
+                    <th>Address</th>
+                    <th>HK Grid coordinates</th>
+                    <th>Event date</th>
+                    <th>Description</th>
+                        <th>Number of cases involved</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if d %}
+            {% for i in d %}
+                <tr>
+                    <td>{{ i.venue_name }}</td>
+                        <td>{{ i.venue_location }}</td>
+                        <td>{{ i.address }}</td>
+                        <td>{{ i.hk_grid }}</td>
+                        <td>{{ i.event_date }}</td>
+                        <td>{{ i.description }}</td>
+                        <td>{{ i.count }}</td>
+{#                         <td>{{ i.case_number }}</td>#}
 {#                <td><a href="SSE_query/?q={{ case.case_number }}">VIEW DETAILS</a></td>#}
-{#                </tr>#}
-{#            {% endfor %}#}
-{#        </tbody>#}
-{#    </table>#}
+                </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
 
 
 

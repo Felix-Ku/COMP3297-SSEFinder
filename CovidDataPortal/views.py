@@ -21,6 +21,9 @@ import urllib.parse
 import pandas as pd
 import datetime
 from datetime import timedelta
+from django.shortcuts import render
+import pandas as pd
+import json
 
 ####################### New views.
 # @login_required
@@ -278,10 +281,25 @@ def SSE_Finder(request):
 
     cases_all = case_records.objects.all().values()
     events_all = attendances.objects.all().values()
+    events = attendances.objects.all()
 
     df = pd.DataFrame(events_all)
 
-    print (df)
+    groupdf = df.groupby(['venue_name', 'venue_location']).size().to_frame('count').reset_index()
+    df2 = groupdf[groupdf["count"] >= 6]
+
+    json_records = df2.reset_index().to_json(orient='records')
+    data = []
+    data = json.loads(json_records)
+    context = {'d': data}
+
+    # list_count = df2['count'].values.tolist()
+    # list_venue_name = df2['venue_name'].values.tolist()
+    # list_venue_location = df2['venue_location'].values.tolist()
+    # list_address = df2['address'].values.tolist()
+    # list_hk_grid = df2['hk_grid'].values.tolist()
+    # list_event_date = df2['event_date'].values.tolist()
+    # list_description = df2['description'].values.tolist()
 
 
     # if request.method == "POST":
@@ -295,7 +313,7 @@ def SSE_Finder(request):
     #
 
 
-    return render(request, 'SSE_Finder.html')
+    return render(request, 'SSE_Finder.html', context)
     # return render(request, 'SSE_Finder.html', {
     #     'form': form,
     # })
