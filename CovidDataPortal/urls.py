@@ -16,6 +16,8 @@ urlpatterns = [
     path('Case_records/All_cases/Attendance_query/', views.Attendance_query, name='Attendance_query'),
     path('Case_records/Case_query/', views.Case_query, name='Case_query'),
     path('Case_records/Create_attendance/', views.Create_attendance, name='Create_attendance'),
+    path('Case_records/Create_attendance/Fail_date/', views.Fail_date, name='Fail_date'),
+    path('Case_records/Create_attendance/Fail_create/', views.Fail_create, name='Fail_create'),
     path('SSE_Finder/', views.SSE_Finder, name='SSE_Finder'),
     path('logout/', views.logout_view, name='logout'),
     path('', LoginView.as_view(template_name='login.html'), name="login"),

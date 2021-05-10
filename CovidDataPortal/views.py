@@ -19,6 +19,7 @@ import requests
 import urllib.parse
 import pandas as pd
 import datetime
+from datetime import timedelta
 
 ####################### New views.
 # @login_required
@@ -180,6 +181,7 @@ def Create_attendance(request):
         if form.is_valid():
             instance = form.save(commit=False)
             venue_name = form.data.get('venue_name', None)
+            event_date = form.data.get('event_date', None)
             if venue_name is not None:
                 link = "https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q="
                 link += urllib.parse.quote(str(venue_name))
@@ -187,8 +189,16 @@ def Create_attendance(request):
                     resp = requests.get(url=link)
                     data = resp.json()
                     df = pd.DataFrame(data)
+                    date_symptom = datetime.datetime.strptime(cases.symptoms_date, '%d-%m-%Y')
+                    date_confirm = datetime.datetime.strptime(cases.confirmation_date, '%d-%m-%Y')
+                    date_event = datetime.datetime.strptime(event_date, '%d-%m-%Y')
+                    days14 = date_symptom - timedelta(days=14)
+                    if not (days14 <= date_event <= date_confirm):
+                        return redirect(Fail_date)
+
                 except:
                     data_status = "Unsuccessful"
+                    return redirect(Fail_create)
                 if df.empty:
                     data_status = "Unsuccessful"
                     add = "Unsuccessful retrieval"
@@ -197,7 +207,7 @@ def Create_attendance(request):
                     data_status = "Successful"
                     x = df.iloc[0]["x"]
                     y = df.iloc[0]["y"]
-                    grid = str(x)+","+str(y)
+                    grid = str(x) + "," + str(y)
                     add = str(df.iloc[0]["addressEN"])
             instance.hk_grid = grid
             instance.address = add
@@ -214,6 +224,9 @@ def Create_attendance(request):
     # form.cleaned_data['Email'] = GetEmailString()
     # id = form.cleaned_data.get('id', None)
     # cleaned_data / data
+    # date_symptom=datetime.datetime.strptime(date_time_str, '%d/%m/%Y')
+    # date_confirm=datetime.datetime.strptime(date_time_str, '%d/%m/%Y')
+    # date_event=datetime.datetime.strptime(date_time_str, '%d/%m/%Y')
 
 
     return render(request, 'Create_attendance.html', {'form':form, 'cases': cases, 'Selected': Selected, 'status': status})
@@ -226,6 +239,18 @@ def All_cases(request):
         'cases': cases
     }
     return render(request, 'All_cases.html', context=context)
+
+def Fail_date(request):
+
+    context = {
+    }
+    return render(request, 'Fail_date.html', context=context)
+
+def Fail_create(request):
+
+    context = {
+    }
+    return render(request, 'Fail_create.html', context=context)
 
 def All_cases_success(request):
 

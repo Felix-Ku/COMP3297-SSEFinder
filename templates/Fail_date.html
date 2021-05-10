@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <p>
+      <strong><em><span style="color:red;">Date outside period of interest! / Date format incorrect!
+          </br>i.e. Date of event outside 14 days before onset of symptoms and Date of confirmation of infection by testing!</span></em></strong>
+  </p>
+    <a href="{% url 'Create_attendance' %}">Back to attendance adding page</a>
+
+{% endblock %}
