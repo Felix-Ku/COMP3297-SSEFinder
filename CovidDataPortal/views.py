@@ -288,6 +288,8 @@ def SSE_Finder(request):
     groupdf = df.groupby(['venue_name', 'venue_location']).size().to_frame('count').reset_index()
     df2 = groupdf[groupdf["count"] >= 6]
 
+    print(df2)
+
     json_records = df2.reset_index().to_json(orient='records')
     data = []
     data = json.loads(json_records)
