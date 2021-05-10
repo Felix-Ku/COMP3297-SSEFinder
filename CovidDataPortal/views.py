@@ -157,7 +157,7 @@ def Create_attendance(request):
                                      'case_number_link':'CASE NOT SELECTED!'})
 
     if request.method == "POST":
-        form = CaseInputForm(request.POST)
+        form = AttInputForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect(All_cases_success)
