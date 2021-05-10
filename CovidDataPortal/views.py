@@ -288,12 +288,31 @@ def SSE_Finder(request):
     groupdf = df.groupby(['venue_name', 'venue_location']).size().to_frame('count').reset_index()
     df2 = groupdf[groupdf["count"] >= 6]
 
-    print(df2)
 
-    json_records = df2.reset_index().to_json(orient='records')
-    data = []
-    data = json.loads(json_records)
-    context = {'d': data}
+
+    # list_count = []
+    # list_venue_name = []
+    # list_venue_location = []
+    list_venue_name = df2['venue_name'].values.tolist()
+    list_address = []
+    list_hk_grid = []
+    list_event_date = []
+    list_description = []
+
+    for venue in list_venue_name:
+        for event in events:
+            if (str(event.venue_name)==str(venue)):
+                list_address.append(str(event.address))
+                list_hk_grid.append(str(event.hk_grid))
+                list_event_date.append(str(event.event_date))
+                list_description.append(str(event.description))
+
+    df2["address"] = list_address
+    df2["hk_grid"] = list_hk_grid
+    df2["event_date"] = list_event_date
+    df2["description"] = list_description
+
+    print(df2)
 
     # list_count = df2['count'].values.tolist()
     # list_venue_name = df2['venue_name'].values.tolist()
@@ -302,6 +321,12 @@ def SSE_Finder(request):
     # list_hk_grid = df2['hk_grid'].values.tolist()
     # list_event_date = df2['event_date'].values.tolist()
     # list_description = df2['description'].values.tolist()
+    json_records = df2.reset_index().to_json(orient='records')
+    data = []
+    data = json.loads(json_records)
+    context = {'d': data}
+
+
 
 
     # if request.method == "POST":
