@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views.generic.list import ListView
 
 from .forms import CaseInputForm
+from .forms import AttInputForm
 from django.shortcuts import render
 
 # Import models
@@ -132,10 +133,11 @@ def Create_attendance(request):
         q = request.GET['q']
         case = case_records.objects.all().filter(case_number=q)
 
+        cases=""
+
         if len(case) == 0:
             status = "Case not found!"
             Selected = "None"
-            cases= None
         elif len(case) == 1:
             status = "Case found!"
             Selected = str(q)
@@ -143,14 +145,30 @@ def Create_attendance(request):
         elif len(case) >1:
             status = "Cases with duplicate number found, please check your database."
             Selected = "None"
-            cases = None
 
     else: # If no search action
-        cases = None
         Selected = "None"
         status = "Awaiting search action, please input a search."
 
-    return render(request, 'Create_attendance.html', {'cases': cases, 'Selected': Selected, 'status': status})
+    if cases!="":
+        form = AttInputForm(initial={'address': "LEAVE BLANK for AUTO-INPUT",'hk_grid': "LEAVE BLANK for AUTO-INPUT",'case_number_link': cases.first()})
+    else:
+        form = AttInputForm(initial={'address': "LEAVE BLANK for AUTO-INPUT", 'hk_grid': "LEAVE BLANK for AUTO-INPUT",
+                                     'case_number_link':'CASE NOT SELECTED!'})
+
+    if request.method == "POST":
+        form = CaseInputForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(All_cases_success)
+    context = {
+        'cases': cases,
+        'form': form,
+        'Selected': Selected,
+        'status': status
+    }
+
+    return render(request, 'Create_attendance.html', {'form':form, 'cases': cases, 'Selected': Selected, 'status': status})
 
 def All_cases(request):
 
