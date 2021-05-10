@@ -343,9 +343,9 @@ def SSE_Finder(request):
             date = str(from_date)+","+str(to_date)
 
             df2['event_date'] = pd.to_datetime(df2['event_date'], format='%d-%m-%Y')
-            df3 = df2[df2['event_date'] < from_date_t]
+            df3 = df2[df2['event_date'] <= to_date_t]
             print(df3)
-            df4 = df3[to_date_t < df3['event_date']]
+            df4 = df3[from_date_t <= df3['event_date']]
             print(df4)
             json_records = df4.reset_index().to_json(orient='records')
             dataS = []
