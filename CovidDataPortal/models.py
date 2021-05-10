@@ -4,7 +4,7 @@ from django.db import models
 class case_records(models.Model):
     case_number = models.IntegerField(primary_key=True)
     person_name = models.CharField(max_length=255)
-    id_number = models.CharField(max_length=255)
+    id_number = models.CharField(max_length=255, unique=True)
     birth_date = models.CharField(max_length=255)
     symptoms_date = models.CharField(max_length=255)
     confirmation_date = models.CharField(max_length=255)
