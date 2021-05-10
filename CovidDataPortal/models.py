@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class case_records(models.Model):
-    case_number = models.IntegerField()
+    case_number = models.IntegerField(primary_key=True)
     person_name = models.CharField(max_length=255)
     id_number = models.CharField(max_length=255)
     birth_date = models.CharField(max_length=255)
