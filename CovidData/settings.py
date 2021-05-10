@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'CovidData.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # /// Remove for local testing ///
-#DATABASES = {  ### /// Remove for local testing ///
-#'default': env.dj_db_url('DATABASE_URL')  ### /// Remove for local testing ///
-#}  ### /// Remove for local testing ///
+DATABASES = {  ### /// Remove for local testing ///
+'default': env.dj_db_url('DATABASE_URL')  ### /// Remove for local testing ///
+}  ### /// Remove for local testing ///
 
 #/// Unremove For local testing
 #DATABASES = {
