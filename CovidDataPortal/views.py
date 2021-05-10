@@ -244,7 +244,6 @@ def Create_attendance(request):
     # date_confirm=datetime.datetime.strptime(date_time_str, '%d/%m/%Y')
     # date_event=datetime.datetime.strptime(date_time_str, '%d/%m/%Y')
 
-
     return render(request, 'Create_attendance.html', {'form':form, 'cases': cases, 'Selected': Selected, 'status': status})
 
 def All_cases(request):
