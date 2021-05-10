@@ -279,7 +279,7 @@ def SSE_Finder(request):
     cases_all = case_records.objects.all()
     events_all = attendances.objects.all()
 
-    df = pd.DataFrame.from_records(cases_all.objects.all().values())
+    df = pd.DataFrame(cases_all)
 
     print (df)
 
