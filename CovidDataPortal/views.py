@@ -178,6 +178,28 @@ def Create_attendance(request):
     if request.method == "POST":
         form = AttInputForm(request.POST)
         if form.is_valid():
+            venue_name = form.cleaned_data.get('venue_name', None)
+            if venue_name is not None:
+                link = "https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q="
+                link += urllib.parse.quote(str(venue_name))
+                try:
+                    resp = requests.get(url=link)
+                    data = resp.json()
+                    df = pd.DataFrame(data)
+                except:
+                    data_status = "Unsuccessful"
+                if df.empty:
+                    data_status = "Unsuccessful"
+                    add = "Unsuccessful retrieval"
+                    grid = "Unsuccessful retrieval"
+                else:
+                    data_status = "Successful"
+                    x = df.iloc[0]["x"]
+                    y = df.iloc[0]["y"]
+                    grid = x+","+y
+                    add = df.iloc[0]["addressEN"]
+            form.cleaned_data['hk_grid'] = grid
+            form.cleaned_data['address'] = add
             form.save()
         return redirect(All_cases_success)
     context = {
@@ -186,6 +208,11 @@ def Create_attendance(request):
         'Selected': Selected,
         'status': status
     }
+
+    # form.cleaned_data['Email'] = GetEmailString()
+    # id = form.cleaned_data.get('id', None)
+    # cleaned_data / data
+
 
     return render(request, 'Create_attendance.html', {'form':form, 'cases': cases, 'Selected': Selected, 'status': status})
 
@@ -253,46 +280,46 @@ def login(request):
     #     for num in range(0, 9):
     #         datelist.append((datetime.datetime.today() - datetime.timedelta(days=num)).strftime('%d/%m/%Y'))
     #
-    #     link = location_api
-    #
-    #     q = {
-    #         "resource": location_url,
-    #         "section": 1,
-    #         "format": "json",
-    #         "filters": [[1, "in", datelist]]
-    #     }
-    #
-    #     j = json.dumps(q)
-    #     query_str = urllib.parse.quote(j)
-    #     link += "?q=" + query_str
-    #
-    #     data_status = "Successful"
-    #
-    #     try:
-    #         resp = requests.get(url=link)
-    #         data = resp.json()
-    #         df = pd.DataFrame(data)
-    #     except:
-    #         data_status = "Unsuccessful"
-    #
-    #     if data_status == "Successful":
-    #         df["new_case"] = df["Number of confirmed cases"].shift(-1) - df["Number of confirmed cases"]
-    #         df["new_fatal"] = df["Number of death cases"].shift(-1) - df["Number of death cases"]
-    #
-    #         location_date = df["As of date"].iloc[-1]
-    #         location_confirmed_total = df["Number of confirmed cases"].iloc[-1]
-    #         location_confirmed_total_perMil = round(location_confirmed_total / (location_pop / 1000000), 2)
-    #         location_fatalities_total = df["Number of death cases"].iloc[-1]
-    #         location_fatalities_total_perMil = round(location_fatalities_total / (location_pop / 1000000), 2)
-    #
-    #         location_new = df["new_case"].iloc[-2]
-    #         location_new_WeekAvg = round(df["new_case"].iloc[-8:-1].mean(), 2)
-    #
-    #         location_fatalities_new = df["new_fatal"].iloc[-2]
-    #         location_fatalities_new_WeekAvg = round(df["new_fatal"].iloc[-8:-1].mean(), 2)
-    #     else:
-    #         location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
-    #         data_status = "Unsuccessful - Check API or URL links"
+        # link = location_api
+        #
+        # q = {
+        #     "resource": location_url,
+        #     "section": 1,
+        #     "format": "json",
+        #     "filters": [[1, "in", datelist]]
+        # }
+        #
+        # j = json.dumps(q)
+        # query_str = urllib.parse.quote(j)
+        # link += "?q=" + query_str
+        #
+        # data_status = "Successful"
+        #
+        # try:
+        #     resp = requests.get(url=link)
+        #     data = resp.json()
+        #     df = pd.DataFrame(data)
+        # except:
+        #     data_status = "Unsuccessful"
+        #
+        # if data_status == "Successful":
+        #     df["new_case"] = df["Number of confirmed cases"].shift(-1) - df["Number of confirmed cases"]
+        #     df["new_fatal"] = df["Number of death cases"].shift(-1) - df["Number of death cases"]
+        #
+        #     location_date = df["As of date"].iloc[-1]
+        #     location_confirmed_total = df["Number of confirmed cases"].iloc[-1]
+        #     location_confirmed_total_perMil = round(location_confirmed_total / (location_pop / 1000000), 2)
+        #     location_fatalities_total = df["Number of death cases"].iloc[-1]
+        #     location_fatalities_total_perMil = round(location_fatalities_total / (location_pop / 1000000), 2)
+        #
+        #     location_new = df["new_case"].iloc[-2]
+        #     location_new_WeekAvg = round(df["new_case"].iloc[-8:-1].mean(), 2)
+        #
+        #     location_fatalities_new = df["new_fatal"].iloc[-2]
+        #     location_fatalities_new_WeekAvg = round(df["new_fatal"].iloc[-8:-1].mean(), 2)
+        # else:
+        #     location_date = location_confirmed_total = location_confirmed_total_perMil = location_fatalities_total = location_fatalities_total_perMil = location_new = location_new_WeekAvg = location_fatalities_new = location_fatalities_new_WeekAvg = "NO DATA"
+        #     data_status = "Unsuccessful - Check API or URL links"
     #
     #
     # context = {
