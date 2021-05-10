@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CovidDataPortal.apps.CoviddataportalConfig',
+#    'account',
     #'user',
 ]
 
@@ -89,16 +90,17 @@ DATABASES = {  ### /// Remove for local testing ///
 }  ### /// Remove for local testing ///
 
 #/// Unremove For local testing
-# DATABASES = {
+#DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'location',
+#         'NAME': 'ssefinder',
+#         #'NAME': 'location',
 #         'USER': 'felix',
 #         'PASSWORD': '12345',
 #         'HOST': 'localhost',
 #         'PORT': '',
 #     }
-# }
+ #}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -138,7 +140,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
-#AUTH_USER_MODEL = 'user.User'
+#AUTH_USER_MODEL = 'account.User'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
