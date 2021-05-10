@@ -276,18 +276,29 @@ def All_cases_success(request):
 
 def SSE_Finder(request):
 
-    if request.method == "POST":
-        form = InputForm(request.POST)
-        if form.is_valid():
-            from_date = request.POST.get('from_date', '')
-            to_date = request.POST.get('to_date', '')
+    cases_all = case_records.objects.all()
+    events_all = attendances.objects.all()
 
-    else:
-        form = InputForm()
+    df = pd.DataFrame.from_records(cases_all.objects.all().values())
 
-    return render(request, 'SSE_Finder.html', {
-        'form': form,
-    })
+    print (df)
+
+
+    # if request.method == "POST":
+    #     form = InputForm(request.POST)
+    #     if form.is_valid():
+    #         from_date = request.POST.get('from_date', '')
+    #         to_date = request.POST.get('to_date', '')
+    #
+    # else:
+    #     form = InputForm()
+    #
+
+
+    return render(request, 'SSE_Finder.html')
+    # return render(request, 'SSE_Finder.html', {
+    #     'form': form,
+    # })
 
 def SSE_query(request):
 
