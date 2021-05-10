@@ -334,19 +334,25 @@ def SSE_Finder(request):
     if request.method == "POST":
         form = InputForm(request.POST)
         if form.is_valid():
+
             from_date = request.POST.get('from_date', '')
             to_date = request.POST.get('to_date', '')
             from_date_t = datetime.datetime.strptime(from_date, '%d-%m-%Y')
             to_date_t = datetime.datetime.strptime(to_date, '%d-%m-%Y')
+
             date = str(from_date)+","+str(to_date)
+
             df2['event_date'] = pd.to_datetime(df2['event_date'], format='%d-%m-%Y')
             df3 = df2[df2['event_date'] < from_date_t]
+            print(df3)
             df4 = df3[to_date_t < df3['event_date']]
+            print(df4)
             json_records = df4.reset_index().to_json(orient='records')
             dataS = []
             dataS = json.loads(json_records)
             context = {'Selected':date, 'status': "Successful", 'd': data, 'form': form, 's': dataS}
-
+        else:
+            context = {'Selected': "", 'status': "Unsuccessful", 'd': data, 'form': form, 's':''}
 
     else:
         form = InputForm()
