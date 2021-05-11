@@ -4,12 +4,10 @@
 ## Main
 App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 
-## To-Do
+## Limitations
 
-- Change heroku main directory name
-- Assign functions to groupmates
-	- Models
-	- Functions
+- Clients should input dates in the format of "dd/mm/YYYY".
+- Client should provide its login details to login the system before using
 
 ## Coding instructions
 
@@ -57,3 +55,6 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 - (If new files added) git add --all
 - git commit -m "COMMIT NAME"
 - git push github master / git push heroku master
+
+## Author of readme
+- Felix Ku Sze Hung
