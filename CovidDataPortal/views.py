@@ -351,18 +351,15 @@ def SSE_Finder(request):
             json_records = df4.reset_index().to_json(orient='records')
             dataS = []
             dataS = json.loads(json_records)
-            context = {'Selected':date, 'status': "Successful", 'd': data, 'form': form, 's': dataS}
-            if dataS == []:
-                context = {'Selected': "", 'status': "Unsuccessful", 'd': data, 'form': form, 's': ''}
+            context = {'Selected':date, 'status': "Functioning", 'd': data, 'form': form, 's': dataS}
         else:
-            context = {'Selected': "", 'status': "Unsuccessful", 'd': data, 'form': form, 's':''}
+            context = {'Selected': "", 'status': "Functioning", 'd': data, 'form': form, 's':''}
 
     else:
         form = InputForm()
-        context = {'Selected': "", 'status': "Unsuccessful", 'd': data, 'form': form, 's':''}
+        context = {'Selected': "", 'status': "Functioning", 'd': data, 'form': form, 's':''}
 
-    if dataS==[]:
-        context = {'Selected': "", 'status': "Unsuccessful", 'd': data, 'form': form, 's': ''}
+
 
     return render(request, 'SSE_Finder.html', context)
     # return render(request, 'SSE_Finder.html', {
