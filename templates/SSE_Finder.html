@@ -59,8 +59,7 @@
                         <td>{{ j.event_date }}</td>
                         <td>{{ j.description }}</td>
                         <td>{{ j.count }}</td>
-{#                         <td>{{ i.case_number }}</td>#}
-{#                <td><a href="SSE_query/?q={{ case.case_number }}">VIEW DETAILS</a></td>#}
+                <td><a href="SSE_query/?q={{ j.venue_name }}">VIEW DETAILS</a></td>
                 </tr>
             {% endfor %}
             {% endif %}
@@ -94,8 +93,8 @@
                         <td>{{ i.event_date }}</td>
                         <td>{{ i.description }}</td>
                         <td>{{ i.count }}</td>
-{#                         <td>{{ i.case_number }}</td>#}
-{#                <td><a href="SSE_query/?q={{ case.case_number }}">VIEW DETAILS</a></td>#}
+
+                <td><a href="SSE_query/?q={{ i.venue_name }}">VIEW DETAILS</a></td>
                 </tr>
             {% endfor %}
             {% endif %}

@@ -278,7 +278,6 @@ def All_cases_success(request):
 
 def SSE_Finder(request):
 
-    cases_all = case_records.objects.all().values()
     events_all = attendances.objects.all().values()
     events = attendances.objects.all()
 
@@ -365,23 +364,53 @@ def SSE_Finder(request):
 
 def SSE_query(request):
 
+    cases_all = case_records.objects.all()
+    events = attendances.objects.all()
+
+    Selected=""
+    data=[]
+
     case = "ABC"
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
+        print("====0====")
+        Selected=q
+        events_filtered = events.all().filter(venue_name=q)
+        events_filtered_value = events_filtered.values()
+        df = pd.DataFrame(events_filtered_value)
+        print("====1====")
+        case_list=[]
+        event_date_list=[]
+        classification_list=[]
+        print("====2====")
+        for dates in df["event_date"]:
+            event_date_list.append(datetime.datetime.strptime(dates, '%d-%m-%Y'))
 
-        case = str(q)
+        for cases in df["case_number_link"]:
+            case_list.append(cases)
+        print("====3====")
+        count=0;
+        for i in range(len(case_list)):
+            for case in cases_all:
+                if (case_list[i]==case.case_number):
+                    if (event_date_list[i]<=datetime.datetime.strptime(case.confirmation_date, '%d-%m-%Y')) and ((datetime.datetime.strptime(case.symptoms_date, '%d-%m-%Y')- timedelta(days=3))<=event_date_list[i]):
+                        classification_list.append("Possible infector")
+                    elif ((event_date_list[i]+ timedelta(days=2))<=datetime.datetime.strptime(case.symptoms_date, '%d-%m-%Y')) and (datetime.datetime.strptime(case.symptoms_date, '%d-%m-%Y')<=(event_date_list[i]+ timedelta(days=14))):
+                        classification_list.append("Possible infected")
+                    break
 
-        # cases = case_records.objects.all().filter(case_number=q)
-        # if len(cases) == 0:
-        #     status = "Case not found!"
-        # else:
-        #     status = "Case found!"
-    # else:
-        # cases = case_records.objects.all()
-        # message = "Showing all cases"
-        # status = "Awaiting search action..."
+        try:
+            df_final = pd.DataFrame(list(zip(case_list, event_date_list,classification_list)),columns=['Case_Involved', 'Event_details', 'Classification_of_case'])
+            print("====4====")
+            json_records = df_final.reset_index().to_json(orient='records')
+            data = []
+            data = json.loads(json_records)
 
-    return render(request, 'SSE_query.html', {'case': case, 'Selected': "Selected" })
+        except:
+            print("error")
+
+
+    return render(request, 'SSE_query.html', {'Selected': Selected , 'd': data})
 
 def index(request):
     context = {
