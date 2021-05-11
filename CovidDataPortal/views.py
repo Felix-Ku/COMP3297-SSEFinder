@@ -373,22 +373,28 @@ def SSE_query(request):
     case = "ABC"
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
-        print("====0====")
+
         Selected=q
         events_filtered = events.all().filter(venue_name=q)
         events_filtered_value = events_filtered.values()
+        print("====0====")
+        print(events_filtered_value)
         df = pd.DataFrame(events_filtered_value)
         print("====1====")
+        print(df)
         case_list=[]
         event_date_list=[]
         classification_list=[]
-        print("====2====")
+
         for dates in df["event_date"]:
             event_date_list.append(datetime.datetime.strptime(dates, '%d-%m-%Y'))
-
+        print("====2====")
+        print(event_date_list)
         for cases in df["case_number_link"]:
             case_list.append(cases)
+
         print("====3====")
+        print(case_list)
         count=0;
         for i in range(len(case_list)):
             for case in cases_all:
@@ -402,6 +408,7 @@ def SSE_query(request):
         try:
             df_final = pd.DataFrame(list(zip(case_list, event_date_list,classification_list)),columns=['Case_Involved', 'Event_details', 'Classification_of_case'])
             print("====4====")
+            print(df_final)
             json_records = df_final.reset_index().to_json(orient='records')
             data = []
             data = json.loads(json_records)
