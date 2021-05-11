@@ -1,3 +1,4 @@
+"""Author: Felix Ku Sze Hung (3035370363)"""
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -246,6 +247,7 @@ def Create_attendance(request):
 
     return render(request, 'Create_attendance.html', {'form':form, 'cases': cases, 'Selected': Selected, 'status': status})
 
+
 def All_cases(request):
 
     cases = case_records.objects.all()
@@ -436,6 +438,7 @@ def SSE_query(request):
 
     return render(request, 'SSE_query.html', {'Selected': Selected , 'd': data, 'result': result})
 
+
 def index(request):
     context = {
     }
@@ -622,3 +625,5 @@ def login(request):
 #         "object_list": queryset
 #     }
 #     return render(request, 'LocationData_list.html', context=context)
+
+"""Author: Felix Ku Sze Hung (3035370363)"""
