@@ -280,84 +280,89 @@ def All_cases_success(request):
 
 def SSE_Finder(request):
 
-    events_all = attendances.objects.all().values()
-    events = attendances.objects.all()
+    try:
 
-    df = pd.DataFrame(events_all)
+        events_all = attendances.objects.all().values()
+        events = attendances.objects.all()
 
-    groupdf = df.groupby(['venue_name', 'venue_location']).size().to_frame('count').reset_index()
-    df2 = groupdf[groupdf["count"] >= 6]
+        df = pd.DataFrame(events_all)
 
-
-
-    # list_count = []
-    # list_venue_name = []
-    # list_venue_location = []
-    list_venue_name = df2['venue_name'].values.tolist()
-    list_address = []
-    list_hk_grid = []
-    list_event_date = []
-    list_description = []
-
-    for venue in list_venue_name:
-        for event in events:
-            if (str(event.venue_name)==str(venue)):
-                list_address.append(str(event.address))
-                list_hk_grid.append(str(event.hk_grid))
-                list_event_date.append(str(event.event_date))
-                list_description.append(str(event.description))
-                break
-
-    df2["address"] = list_address
-    df2["hk_grid"] = list_hk_grid
-    df2["event_date"] = list_event_date
-    df2["description"] = list_description
-    # print(list_address)
-    # print(list_hk_grid)
-    # print(list_event_date)
-    # print(list_description)
+        groupdf = df.groupby(['venue_name', 'venue_location']).size().to_frame('count').reset_index()
+        df2 = groupdf[groupdf["count"] >= 6]
 
 
-    print(df2)
 
-    # list_count = df2['count'].values.tolist()
-    # list_venue_name = df2['venue_name'].values.tolist()
-    # list_venue_location = df2['venue_location'].values.tolist()
-    # list_address = df2['address'].values.tolist()
-    # list_hk_grid = df2['hk_grid'].values.tolist()
-    # list_event_date = df2['event_date'].values.tolist()
-    # list_description = df2['description'].values.tolist()
+        # list_count = []
+        # list_venue_name = []
+        # list_venue_location = []
+        list_venue_name = df2['venue_name'].values.tolist()
+        list_address = []
+        list_hk_grid = []
+        list_event_date = []
+        list_description = []
 
-    json_records = df2.reset_index().to_json(orient='records')
-    data = []
-    data = json.loads(json_records)
+        for venue in list_venue_name:
+            for event in events:
+                if (str(event.venue_name)==str(venue)):
+                    list_address.append(str(event.address))
+                    list_hk_grid.append(str(event.hk_grid))
+                    list_event_date.append(str(event.event_date))
+                    list_description.append(str(event.description))
+                    break
 
-    if request.method == "POST":
-        form = InputForm(request.POST)
-        if form.is_valid():
+        df2["address"] = list_address
+        df2["hk_grid"] = list_hk_grid
+        df2["event_date"] = list_event_date
+        df2["description"] = list_description
+        # print(list_address)
+        # print(list_hk_grid)
+        # print(list_event_date)
+        # print(list_description)
 
-            from_date = request.POST.get('from_date', '')
-            to_date = request.POST.get('to_date', '')
-            from_date_t = datetime.datetime.strptime(from_date, '%d-%m-%Y')
-            to_date_t = datetime.datetime.strptime(to_date, '%d-%m-%Y')
 
-            date = str(from_date)+"-"+str(to_date)
+        print(df2)
 
-            df2['event_date'] = pd.to_datetime(df2['event_date'], format='%d-%m-%Y')
-            df3 = df2[df2['event_date'] <= to_date_t]
-            print(df3)
-            df4 = df3[from_date_t <= df3['event_date']]
-            print(df4)
-            json_records = df4.reset_index().to_json(orient='records')
-            dataS = []
-            dataS = json.loads(json_records)
-            context = {'Selected':date, 'status': "Functioning", 'd': data, 'form': form, 's': dataS}
+        # list_count = df2['count'].values.tolist()
+        # list_venue_name = df2['venue_name'].values.tolist()
+        # list_venue_location = df2['venue_location'].values.tolist()
+        # list_address = df2['address'].values.tolist()
+        # list_hk_grid = df2['hk_grid'].values.tolist()
+        # list_event_date = df2['event_date'].values.tolist()
+        # list_description = df2['description'].values.tolist()
+
+        json_records = df2.reset_index().to_json(orient='records')
+        data = []
+        data = json.loads(json_records)
+
+        if request.method == "POST":
+            form = InputForm(request.POST)
+            if form.is_valid():
+
+                from_date = request.POST.get('from_date', '')
+                to_date = request.POST.get('to_date', '')
+                from_date_t = datetime.datetime.strptime(from_date, '%d-%m-%Y')
+                to_date_t = datetime.datetime.strptime(to_date, '%d-%m-%Y')
+
+                date = str(from_date)+"-"+str(to_date)
+
+                df2['event_date'] = pd.to_datetime(df2['event_date'], format='%d-%m-%Y')
+                df3 = df2[df2['event_date'] <= to_date_t]
+                print(df3)
+                df4 = df3[from_date_t <= df3['event_date']]
+                print(df4)
+                json_records = df4.reset_index().to_json(orient='records')
+                dataS = []
+                dataS = json.loads(json_records)
+                context = {'Selected':date, 'status': "Functioning", 'd': data, 'form': form, 's': dataS}
+            else:
+                context = {'Selected': "", 'status': "Functioning", 'd': data, 'form': form, 's':''}
+
         else:
+            form = InputForm()
             context = {'Selected': "", 'status': "Functioning", 'd': data, 'form': form, 's':''}
-
-    else:
+    except:
         form = InputForm()
-        context = {'Selected': "", 'status': "Functioning", 'd': data, 'form': form, 's':''}
+        context = {'Selected': "", 'status': "Functioning", 'd': '', 'form': form, 's':''}
 
 
 
