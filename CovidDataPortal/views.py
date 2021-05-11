@@ -398,7 +398,6 @@ def SSE_query(request):
 
         print("====3====")
         print(case_list)
-        count=0;
         for i in range(len(case_list)):
             for case in cases_all:
                 dummy_sym.append(datetime.datetime.strptime(str(case.confirmation_date), '%d-%m-%Y'))

@@ -19,7 +19,19 @@
     </br>
 
 <tbody>
-            {% if d %}
+
+        </tbody>
+
+       <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Case Involved</th>
+                    <th>Event details</th>
+                    <th>Classification of case</th>
+            </tr>
+        </thead>
+        <tbody>
+                     {% if d %}
             {% for i in d %}
                 <tr>
                     <td>{{ i.Case_Involved }}</td>
@@ -29,6 +41,7 @@
             {% endfor %}
             {% endif %}
         </tbody>
+    </table>
 
     <hr>
     <h2>Search for other cases:</h2>
