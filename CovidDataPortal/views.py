@@ -367,7 +367,7 @@ def SSE_query(request):
     cases_all = case_records.objects.all()
     events = attendances.objects.all()
 
-    Selected=""
+    Selected="Nothing found"
     data=[]
 
     case = "ABC"
@@ -405,19 +405,25 @@ def SSE_query(request):
                         classification_list.append("Possible infected")
                     break
 
+        print("====4====")
+        print(classification_list)
+
         try:
             df_final = pd.DataFrame(list(zip(case_list, event_date_list,classification_list)),columns=['Case_Involved', 'Event_details', 'Classification_of_case'])
-            print("====4====")
+            print("====5====")
             print(df_final)
             json_records = df_final.reset_index().to_json(orient='records')
             data = []
             data = json.loads(json_records)
-
         except:
             print("error")
 
+    if data==[]:
+        result="Nothing found"
+    else:
+        result = "Something found"
 
-    return render(request, 'SSE_query.html', {'Selected': Selected , 'd': data})
+    return render(request, 'SSE_query.html', {'Selected': Selected , 'd': data, 'result': result})
 
 def index(request):
     context = {
