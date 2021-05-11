@@ -386,6 +386,9 @@ def SSE_query(request):
         event_date_list=[]
         classification_list=[]
 
+        dummy_sym = []
+        dummy_con = []
+
         for dates in df["event_date"]:
             event_date_list.append(datetime.datetime.strptime(dates, '%d-%m-%Y'))
         print("====2====")
@@ -398,15 +401,24 @@ def SSE_query(request):
         count=0;
         for i in range(len(case_list)):
             for case in cases_all:
-                if (case_list[i]==case.case_number):
-                    if (event_date_list[i]<=datetime.datetime.strptime(case.confirmation_date, '%d-%m-%Y')) and ((datetime.datetime.strptime(case.symptoms_date, '%d-%m-%Y')- timedelta(days=3))<=event_date_list[i]):
+                dummy_sym.append(datetime.datetime.strptime(str(case.confirmation_date), '%d-%m-%Y'))
+                dummy_con.append(datetime.datetime.strptime(str(case.symptoms_date), '%d-%m-%Y'))
+                if (case_list[i]==str(case.case_number)):
+                    if (event_date_list[i]<=datetime.datetime.strptime(str(case.confirmation_date), '%d-%m-%Y')) and ((datetime.datetime.strptime(str(case.symptoms_date), '%d-%m-%Y')- timedelta(days=3))<=event_date_list[i]):
                         classification_list.append("Possible infector")
-                    elif ((event_date_list[i]+ timedelta(days=2))<=datetime.datetime.strptime(case.symptoms_date, '%d-%m-%Y')) and (datetime.datetime.strptime(case.symptoms_date, '%d-%m-%Y')<=(event_date_list[i]+ timedelta(days=14))):
+                    elif ((event_date_list[i]+ timedelta(days=2))<=datetime.datetime.strptime(str(case.symptoms_date), '%d-%m-%Y')) and (datetime.datetime.strptime(str(case.symptoms_date), '%d-%m-%Y')<=(event_date_list[i]+ timedelta(days=14))):
                         classification_list.append("Possible infected")
+                    else:
+                        classification_list.append("Unknown")
                     break
 
         print("====4====")
         print(classification_list)
+
+        print("====4.1====")
+        print(dummy_sym)
+        print("====4.2====")
+        print(dummy_con)
 
         try:
             df_final = pd.DataFrame(list(zip(case_list, event_date_list,classification_list)),columns=['Case_Involved', 'Event_details', 'Classification_of_case'])
