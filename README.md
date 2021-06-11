@@ -57,4 +57,4 @@ App Link (Heroku) : https://frozen-waters-91223.herokuapp.com/CovidDataPortal/
 - git push github master / git push heroku master
 
 ### Author
-- Felix Ku Sze Hung
+- Felix Ku
