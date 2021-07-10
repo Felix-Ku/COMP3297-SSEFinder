@@ -1,4 +1,4 @@
-# COMP3297-SSEFinder
+# SSEFinder
 - COMP3297 Group F Project
 
 ## Main
